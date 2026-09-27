@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
   }
 
   // 3. 调 AI 生成
-  if (!isAiConfigured()) {
+  if (!(await isAiConfigured())) {
     return fail("AI 未配置，无法生成例句", 400);
   }
 
@@ -53,7 +53,7 @@ export async function POST(request: NextRequest) {
     const en = (parsed?.en || "").trim();
     const zh = (parsed?.zh || "").trim();
     if (!en) return fail("AI 未返回有效例句", 502);
-    await setCachedExample(wordId, en, zh, aiModelName());
+    await setCachedExample(wordId, en, zh, await aiModelName());
     return ok({ wordId, en, zh, cached: false });
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);

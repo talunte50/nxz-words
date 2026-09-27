@@ -42,7 +42,7 @@ export default function LoginPage() {
         <div className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-brand-500 text-2xl font-bold text-white">
           W
         </div>
-        <h1 className="mt-4 text-xl font-semibold">WordLeap 词跃</h1>
+        <h1 className="mt-4 text-xl font-semibold">逆行者单词</h1>
         <p className="mt-1 text-sm text-slate-500 dark:text-slate-400 dark:text-slate-500">AI 驱动的英语单词学习 · 首次登录将自动注册</p>
       </div>
 

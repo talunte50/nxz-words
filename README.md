@@ -1,4 +1,4 @@
-# WordLeap 词跃 · EdgeOne AI 背单词
+# 逆行者单词 · EdgeOne AI 背单词
 
 一个部署在 **EdgeOne Pages（Makers）** 上的 AI 英语单词学习应用：翻转卡片学习 + 艾宾浩斯记忆曲线排期 + 拼写/听写测试 + AI 精讲 + AI 口语陪练 + 个人中心。
 

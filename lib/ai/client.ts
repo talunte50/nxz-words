@@ -1,8 +1,9 @@
 import type { ChatMessage } from "../types";
+import { getAiConfig, isAiReady, type AiConfig } from "../config/ai";
 
 export class AiNotConfiguredError extends Error {
   constructor() {
-    super("AI 未配置：请设置 AI_BASE_URL / AI_API_KEY / AI_MODEL 环境变量");
+    super("AI 未配置：请在管理端配置大模型，或设置 AI_BASE_URL / AI_API_KEY / AI_MODEL 环境变量");
     this.name = "AiNotConfiguredError";
   }
 }
@@ -15,36 +16,40 @@ export interface ChatOptions {
   signal?: AbortSignal;
 }
 
-export function isAiConfigured(): boolean {
-  return Boolean(process.env.AI_BASE_URL && process.env.AI_API_KEY && process.env.AI_MODEL);
-}
-
-export function aiModelName(): string {
-  return process.env.AI_MODEL || "unknown";
-}
-
-function endpoint(): string {
-  const base = (process.env.AI_BASE_URL || "").replace(/\/+$/, "");
+function endpoint(baseUrl: string): string {
+  const base = (baseUrl || "").replace(/\/+$/, "");
   return `${base}/chat/completions`;
 }
 
-function headers(): Record<string, string> {
+function headers(config: AiConfig): Record<string, string> {
   return {
     "Content-Type": "application/json",
-    Authorization: `Bearer ${process.env.AI_API_KEY}`,
+    Authorization: `Bearer ${config.apiKey}`,
   };
 }
 
+/** 是否已配置（同时读 KV 与环境变量） */
+export async function isAiConfigured(): Promise<boolean> {
+  return isAiReady(await getAiConfig());
+}
+
+/** 当前生效的模型名，用于前端展示 */
+export async function aiModelName(): Promise<string> {
+  const config = await getAiConfig();
+  return config.model || "unknown";
+}
+
 export async function chat(options: ChatOptions): Promise<string> {
-  if (!isAiConfigured()) throw new AiNotConfiguredError();
-  const res = await fetch(endpoint(), {
+  const config = await getAiConfig();
+  if (!isAiReady(config)) throw new AiNotConfiguredError();
+  const res = await fetch(endpoint(config.baseUrl), {
     method: "POST",
-    headers: headers(),
+    headers: headers(config),
     body: JSON.stringify({
-      model: process.env.AI_MODEL,
+      model: config.model,
       messages: options.messages,
-      temperature: options.temperature ?? 0.7,
-      max_tokens: options.maxTokens ?? 900,
+      temperature: options.temperature ?? config.temperature ?? 0.7,
+      max_tokens: options.maxTokens ?? config.maxTokens ?? 900,
       ...(options.json ? { response_format: { type: "json_object" } } : {}),
     }),
     signal: options.signal,
@@ -59,15 +64,16 @@ export async function chat(options: ChatOptions): Promise<string> {
 }
 
 export async function* chatStream(options: ChatOptions): AsyncGenerator<string, void, unknown> {
-  if (!isAiConfigured()) throw new AiNotConfiguredError();
-  const res = await fetch(endpoint(), {
+  const config = await getAiConfig();
+  if (!isAiReady(config)) throw new AiNotConfiguredError();
+  const res = await fetch(endpoint(config.baseUrl), {
     method: "POST",
-    headers: headers(),
+    headers: headers(config),
     body: JSON.stringify({
-      model: process.env.AI_MODEL,
+      model: config.model,
       messages: options.messages,
-      temperature: options.temperature ?? 0.7,
-      max_tokens: options.maxTokens ?? 900,
+      temperature: options.temperature ?? config.temperature ?? 0.7,
+      max_tokens: options.maxTokens ?? config.maxTokens ?? 900,
       stream: true,
     }),
     signal: options.signal,

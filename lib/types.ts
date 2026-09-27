@@ -18,6 +18,10 @@ export interface WordBook {
   description: string;
   level: string;
   cover: string;
+  /** 词库分类（如「中国考试」「国际考试」），qwerty 导入的词库均有 */
+  category?: string;
+  /** 语种代码，如 en / ja / de */
+  language?: string;
   words: Word[];
 }
 
@@ -27,7 +31,13 @@ export interface WordBookMeta {
   description: string;
   level: string;
   cover: string;
+  /** 词库分类 */
+  category?: string;
+  /** 语种代码 */
+  language?: string;
   wordCount: number;
+  /** 管理端可控制词库是否对外可见 */
+  enabled?: boolean;
 }
 
 export interface ReviewState {

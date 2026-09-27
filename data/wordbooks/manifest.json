@@ -1,106 +1,3682 @@
 [
   {
-    "id": "primary",
-    "name": "小学英语",
-    "description": "人教版小学 3-6 年级核心词汇（多分册合并去重）",
-    "level": "小学",
-    "cover": "🎒",
-    "wordCount": 1221
-  },
-  {
-    "id": "junior",
-    "name": "初中英语",
-    "description": "中考核心词汇，覆盖初中三年教材",
-    "level": "初中",
-    "cover": "📐",
-    "wordCount": 2500
-  },
-  {
-    "id": "senior",
-    "name": "高中英语",
-    "description": "高考 3500 词与高中教材词汇",
-    "level": "高中",
-    "cover": "🧪",
-    "wordCount": 4500
-  },
-  {
-    "id": "college",
-    "name": "大学英语",
-    "description": "牛津核心 5000 + 麦克米伦 7000 通用英语词表（非应试，与四六级不重复）",
-    "level": "大学",
-    "cover": "🎓",
-    "wordCount": 6000
-  },
-  {
-    "id": "cet4",
-    "name": "大学英语四级",
-    "description": "CET-4 核心词汇",
-    "level": "CET4",
+    "id": "2024HongBao T1",
+    "name": "2024考研英语hongbaoshu(上)",
+    "description": "2024考研英语hongbaoshu必考词（上）",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
     "cover": "📘",
-    "wordCount": 2607
+    "wordCount": 997
   },
   {
-    "id": "cet6",
-    "name": "大学英语六级",
-    "description": "CET-6 进阶词汇",
-    "level": "CET6",
-    "cover": "📗",
-    "wordCount": 2345
+    "id": "2024HongBao T2",
+    "name": "2024考研英语hongbaoshu(下)",
+    "description": "2024考研英语hongbaoshu必考词（下）",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 854
   },
   {
-    "id": "business",
-    "name": "商务英语",
-    "description": "BEC 商务英语词汇（中级 + 高级合并）",
-    "level": "商务",
-    "cover": "💼",
-    "wordCount": 2822
+    "id": "2025KaoYanHongBaoShu",
+    "name": "2025考研英语词汇hongbao书",
+    "description": "2025考研英语词汇hongbao书",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 6702
   },
   {
-    "id": "ielts",
-    "name": "雅思",
-    "description": "雅思核心词汇（词表 + 高频 807 词，去重）",
-    "level": "雅思",
-    "cover": "🇬🇧",
-    "wordCount": 4000
+    "id": "hongbaoshu-2026",
+    "name": "2026考研英语 hongbaoshu",
+    "description": "2026 考研词汇 (必考词+基础词+超纲词）",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 4770
   },
   {
-    "id": "toefl",
-    "name": "托福",
-    "description": "托福核心词汇（官方词表 + 张洪岩精选）",
-    "level": "托福",
-    "cover": "✈️",
-    "wordCount": 4000
+    "id": "frequently_used_words01",
+    "name": "超频单词level 1",
+    "description": "超频单词level 1",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 679
+  },
+  {
+    "id": "frequently_used_words03",
+    "name": "超频单词level 2",
+    "description": "超频单词level 2",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 1040
+  },
+  {
+    "id": "dancimimi_2",
+    "name": "单词的秘密-英语二",
+    "description": "单词的秘密英语（二）",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 2854
+  },
+  {
+    "id": "dancimimi_1",
+    "name": "单词的秘密-英语一",
+    "description": "单词的秘密英语（一）",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 4264
+  },
+  {
+    "id": "itVocabulary",
+    "name": "计算机专用英语",
+    "description": "大学计算机专业英语词汇",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 1665
+  },
+  {
+    "id": "archVocabulary",
+    "name": "建筑专业英语",
+    "description": "大学建筑专业英语词汇",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 542
   },
   {
     "id": "kaoyan",
     "name": "考研",
-    "description": "考研英语核心词汇（历年大纲词表）",
-    "level": "考研",
-    "cover": "🏫",
-    "wordCount": 4500
+    "description": "研究生英语入学考试词库",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 3727
+  },
+  {
+    "id": "kaoyan_2024",
+    "name": "考研 2024",
+    "description": "研究生英语入学考试词库 2024",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 3731
+  },
+  {
+    "id": "kaoyanshanguo2025",
+    "name": "考研 shanguo 2025",
+    "description": "考研 shanguo 2025",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 2254
+  },
+  {
+    "id": "926",
+    "name": "考研926词汇",
+    "description": "926核心词汇",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 925
+  },
+  {
+    "id": "kaoyanshanguo_2023",
+    "name": "考研闪过 2023",
+    "description": "高中低频词2023",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 1771
+  },
+  {
+    "id": "xinghuoqiaoji_6",
+    "name": "六级巧记速记",
+    "description": "六级巧记速记",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 6005
+  },
+  {
+    "id": "Macmillan7000",
+    "name": "麦克米伦7000",
+    "description": "麦克米伦7000",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 6265
+  },
+  {
+    "id": "Oxford5000",
+    "name": "牛津5000词",
+    "description": "牛津5000词",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 5458
+  },
+  {
+    "id": "xinghuoqiaoji_4",
+    "name": "四级巧记速记",
+    "description": "四级巧记速记",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 2422
+  },
+  {
+    "id": "tingshuokaoshi",
+    "name": "听说考试常见词汇",
+    "description": "听说考试16个场景常见词汇量",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 539
+  },
+  {
+    "id": "Merriam_Webster_sVocabularyBuilder",
+    "name": "韦氏词根词典",
+    "description": "韦氏词根词典",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 1191
+  },
+  {
+    "id": "English_II",
+    "name": "英语二单词书",
+    "description": "考研英语二单词书",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 4548
+  },
+  {
+    "id": "level8",
+    "name": "专八",
+    "description": "英语专业八级词库",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 12197
+  },
+  {
+    "id": "zhuan-cha-ben-ying-yu",
+    "name": "专插本英语词汇",
+    "description": "专插本英语词汇",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 3216
+  },
+  {
+    "id": "3000_ClassRoom_English_Words",
+    "name": "专升本3000词",
+    "description": "专升本词汇",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 2987
+  },
+  {
+    "id": "adult self-study examination",
+    "name": "专升本词汇",
+    "description": "专升本词汇",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 3690
+  },
+  {
+    "id": "zhuan-sheng-ben-xue-shi",
+    "name": "专升本学士学位的英语",
+    "description": "专升本学士学位的英语",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 896
+  },
+  {
+    "id": "level4",
+    "name": "专四",
+    "description": "英语专业四级词库",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 4025
+  },
+  {
+    "id": "self-study_English1",
+    "name": "自考1800高频单词",
+    "description": "自考1800高频单词",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 1798
+  },
+  {
+    "id": "self-study_English2",
+    "name": "自考英语二高频悠悠单词",
+    "description": "自考英语二高频悠悠单词",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 2172
+  },
+  {
+    "id": "self-study_English3",
+    "name": "自考英语二完整单词",
+    "description": "00015自考英语二完整单词书",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 4166
+  },
+  {
+    "id": "cet4",
+    "name": "CET-4",
+    "description": "大学英语四级词库",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 2607
+  },
+  {
+    "id": "cet4-sub",
+    "name": "CET-4-Sub",
+    "description": "单词的减法-四级",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 1679
+  },
+  {
+    "id": "cet6",
+    "name": "CET-6",
+    "description": "大学英语六级词库",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 2345
+  },
+  {
+    "id": "cet6-sub",
+    "name": "CET-6-Sub",
+    "description": "单词的减法-六级",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 1748
+  },
+  {
+    "id": "coca_20000",
+    "name": "COCA20000词",
+    "description": "COCA20000词",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 17633
+  },
+  {
+    "id": "4000_Essential_English_Words1",
+    "name": "Essential Words",
+    "description": "4000 Essential English Words meaning",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 3593
+  },
+  {
+    "id": "4000_Essential_English_Words2",
+    "name": "Essential Words",
+    "description": "4000 Essential English Words sentence",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 3593
+  },
+  {
+    "id": "longman_communication_3000_words",
+    "name": "Longman Communication 3000",
+    "description": "Most frequent words in both spoken and written English",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 3158
+  },
+  {
+    "id": "pets3",
+    "name": "PETS",
+    "description": "全国英语等级考试常考词汇",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 1941
+  },
+  {
+    "id": "pets3-2023",
+    "name": "PETS-2023",
+    "description": "全国英语等级考试常考词汇",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 4441
+  },
+  {
+    "id": "suffix word",
+    "name": "suffix word",
+    "description": "common suffix",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 126
+  },
+  {
+    "id": "top_1000_verb_Words",
+    "name": "Top 1000 Verbs",
+    "description": "with highest frequency",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 1011
+  },
+  {
+    "id": "top_1500_nouns_Words",
+    "name": "Top 1500 Nouns",
+    "description": "with highest frequency",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 1525
+  },
+  {
+    "id": "top_2000_English_Words",
+    "name": "Top 2000 words",
+    "description": "with highest frequency",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 1867
+  },
+  {
+    "id": "top_250_Adv_Words",
+    "name": "Top 250 adv.",
+    "description": "with highest frequency",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 255
+  },
+  {
+    "id": "top_50_Prepositions",
+    "name": "Top 50 prep.",
+    "description": "with highest frequency",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 46
+  },
+  {
+    "id": "top_500_Adj_Words",
+    "name": "Top 500 adj.",
+    "description": "with highest frequency",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 527
+  },
+  {
+    "id": "top_60_Pronouns",
+    "name": "Top 60 pron.",
+    "description": "with highest frequency",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 59
+  },
+  {
+    "id": "word roots1",
+    "name": "word roots1",
+    "description": "common roots",
+    "level": "中国考试",
+    "category": "中国考试",
+    "language": "en",
+    "cover": "📘",
+    "wordCount": 369
+  },
+  {
+    "id": "IELTSXDF7000",
+    "name": "100个句子记完7000个雅思单词",
+    "description": "xdf 100个句子记完7000个雅思单词 词汇表",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 5475
+  },
+  {
+    "id": "Duolingo_Vocabulary_B1",
+    "name": "多邻国分级词汇B1",
+    "description": "多邻国分级词汇B1",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 801
+  },
+  {
+    "id": "Duolingo_Vocabulary_B2",
+    "name": "多邻国分级词汇B2",
+    "description": "多邻国分级词汇B2",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 1423
+  },
+  {
+    "id": "Duolingo_Vocabulary_C1",
+    "name": "多邻国分级词汇C1",
+    "description": "多邻国分级词汇C1",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 1313
+  },
+  {
+    "id": "Oxford3000",
+    "name": "牛津3000词",
+    "description": "牛津3000词",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 1339
+  },
+  {
+    "id": "bec2",
+    "name": "商务英语",
+    "description": "商务英语常见词",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 2753
+  },
+  {
+    "id": "PTE_FIB_L",
+    "name": "听力 FIB 机经词汇",
+    "description": "听力 FIB 机经词汇",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 642
+  },
+  {
+    "id": "DuckCircle_IELTS",
+    "name": "鸭圈雅思核心词",
+    "description": "鸭圈雅思核心词",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 2607
+  },
+  {
+    "id": "ielts-real-1",
+    "name": "雅思 real 词汇 1",
+    "description": "雅思 real 词汇 （1频词汇及变频）",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 737
+  },
+  {
+    "id": "ielts-real-2",
+    "name": "雅思 real 词汇 2",
+    "description": "雅思 real 词汇 （2频词汇及变频）",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 402
+  },
+  {
+    "id": "ielts-real-3",
+    "name": "雅思 real 词汇 3",
+    "description": "雅思 real 词汇 （3频词汇及变频）",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 256
+  },
+  {
+    "id": "ielts-real-4",
+    "name": "雅思 real 词汇 4",
+    "description": "雅思 real 词汇 （4频词汇及变频）",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 201
+  },
+  {
+    "id": "ielts-real-5",
+    "name": "雅思 real 词汇 5",
+    "description": "雅思 real 词汇 （5频词汇及变频）",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 183
+  },
+  {
+    "id": "ielts-real-high",
+    "name": "雅思 real 词汇 高频",
+    "description": "雅思 real 词汇（高频词汇）",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 524
+  },
+  {
+    "id": "IELTS-807",
+    "name": "雅思 wanglu 807",
+    "description": "雅思 wanglu 807",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 4113
+  },
+  {
+    "id": "IELTS9988wangyong",
+    "name": "雅思9988wangyong",
+    "description": "雅思9988wangyong",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 3644
+  },
+  {
+    "id": "IELTSVocabularyBible",
+    "name": "雅思词汇真经",
+    "description": "雅思词汇真经",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 3630
+  },
+  {
+    "id": "IELTS-oral-900",
+    "name": "雅思口语 900 beta版",
+    "description": "雅思口语 900 句, 需在 qwerty 设置中调小英语字体",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 900
+  },
+  {
+    "id": "IELTS_tinglichangjing",
+    "name": "雅思听力场景词汇",
+    "description": "雅思听力场景词汇",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 1170
+  },
+  {
+    "id": "IELTS-listening-18-days-1",
+    "name": "雅思听力词汇18天 day1",
+    "description": "雅思听力词汇18天 day1",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 74
+  },
+  {
+    "id": "IELTS-listening-18-days-10",
+    "name": "雅思听力词汇18天 day10",
+    "description": "雅思听力词汇18天 day10",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 33
+  },
+  {
+    "id": "IELTS-listening-18-days-11",
+    "name": "雅思听力词汇18天 day11",
+    "description": "雅思听力词汇18天 day11",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 52
+  },
+  {
+    "id": "IELTS-listening-18-days-12",
+    "name": "雅思听力词汇18天 day12",
+    "description": "雅思听力词汇18天 day12",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 77
+  },
+  {
+    "id": "IELTS-listening-18-days-13",
+    "name": "雅思听力词汇18天 day13",
+    "description": "雅思听力词汇18天 day13",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 78
+  },
+  {
+    "id": "IELTS-listening-18-days-14",
+    "name": "雅思听力词汇18天 day14",
+    "description": "雅思听力词汇18天 day14",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 75
+  },
+  {
+    "id": "IELTS-listening-18-days-15",
+    "name": "雅思听力词汇18天 day15",
+    "description": "雅思听力词汇18天 day15",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 75
+  },
+  {
+    "id": "IELTS-listening-18-days-16",
+    "name": "雅思听力词汇18天 day16",
+    "description": "雅思听力词汇18天 day16",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 77
+  },
+  {
+    "id": "IELTS-listening-18-days-17",
+    "name": "雅思听力词汇18天 day17",
+    "description": "雅思听力词汇18天 day17",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 46
+  },
+  {
+    "id": "IELTS-listening-18-days-18",
+    "name": "雅思听力词汇18天 day18",
+    "description": "雅思听力词汇18天 day18",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 76
+  },
+  {
+    "id": "IELTS-listening-18-days-2",
+    "name": "雅思听力词汇18天 day2",
+    "description": "雅思听力词汇18天 day2",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 76
+  },
+  {
+    "id": "IELTS-listening-18-days-3",
+    "name": "雅思听力词汇18天 day3",
+    "description": "雅思听力词汇18天 day3",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 77
+  },
+  {
+    "id": "IELTS-listening-18-days-4",
+    "name": "雅思听力词汇18天 day4",
+    "description": "雅思听力词汇18天 day4",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 73
+  },
+  {
+    "id": "IELTS-listening-18-days-5",
+    "name": "雅思听力词汇18天 day5",
+    "description": "雅思听力词汇18天 day5",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 75
+  },
+  {
+    "id": "IELTS-listening-18-days-6",
+    "name": "雅思听力词汇18天 day6",
+    "description": "雅思听力词汇18天 day6",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 75
+  },
+  {
+    "id": "IELTS-listening-18-days-7",
+    "name": "雅思听力词汇18天 day7",
+    "description": "雅思听力词汇18天 day7",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 75
+  },
+  {
+    "id": "IELTS-listening-18-days-8",
+    "name": "雅思听力词汇18天 day8",
+    "description": "雅思听力词汇18天 day8",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 75
+  },
+  {
+    "id": "IELTS-listening-18-days-9",
+    "name": "雅思听力词汇18天 day9",
+    "description": "雅思听力词汇18天 day9",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 75
+  },
+  {
+    "id": "ieltsWang11",
+    "name": "雅思wang C11",
+    "description": "综合测试",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 1611
+  },
+  {
+    "id": "ieltsWang3",
+    "name": "雅思wang C3",
+    "description": "雅思听力特别名词语料库",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 1134
+  },
+  {
+    "id": "ieltsWang4",
+    "name": "雅思wang C4",
+    "description": "雅思听力形容词副词语料库",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 346
+  },
+  {
+    "id": "ieltsWang5",
+    "name": "雅思wang C5",
+    "description": "吞音连读混合训练语料库",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 1568
+  },
+  {
+    "id": "PTE_FIB_R_senior",
+    "name": "阅读 FIB 高阶机经词汇",
+    "description": "阅读 FIB 高阶机经词汇",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 1256
+  },
+  {
+    "id": "PTE_FIB_R_junior",
+    "name": "阅读 FIB 基础机经词汇",
+    "description": "阅读 FIB 基础机经词汇",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 940
+  },
+  {
+    "id": "ZaiYaoNiMing_GRE3000",
+    "name": "再要你命GRE3000",
+    "description": "再要你命GRE3000词库-有词性新版",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 3034
+  },
+  {
+    "id": "bec3",
+    "name": "BEC",
+    "description": "BEC考试常见词",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 2825
+  },
+  {
+    "id": "Categorized_TOEFL_Vocabulary_by_Zhanghongyan",
+    "name": "Categorized Vocab.",
+    "description": "词以类记 TOEFL 2021 by ZhangHongYan (原书释义和助记; 单词序号)",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 3669
+  },
+  {
+    "id": "Common-Phrases-FCE-Unofficial",
+    "name": "FCE 常用短语 (非官方)",
+    "description": "FCE 常用短语",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 438
+  },
+  {
+    "id": "gmat",
+    "name": "GMAT",
+    "description": "GMAT 词库",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 3047
   },
   {
     "id": "gre",
     "name": "GRE",
-    "description": "GRE 高阶学术词汇（3000 词 + 1500 精选）",
-    "level": "GRE",
-    "cover": "🔬",
-    "wordCount": 3000
+    "description": "GRE 词库",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 6514
   },
   {
-    "id": "nce",
-    "name": "新概念英语",
-    "description": "新概念英语 1-4 册词汇（分册合并去重）",
-    "level": "新概念",
-    "cover": "📕",
-    "wordCount": 3319
+    "id": "gre3000",
+    "name": "GRE3000",
+    "description": "GRE3000 词库",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 3036
   },
   {
-    "id": "topwords",
-    "name": "高频基础词",
-    "description": "常用高频核心词（中文释义，日常与考试通用）",
-    "level": "基础",
-    "cover": "🌟",
-    "wordCount": 4000
+    "id": "GRE_ciyileiji",
+    "name": "GRE词以类记",
+    "description": "GRE词以类记",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 8384
+  },
+  {
+    "id": "GRE_equivalent",
+    "name": "GRE等价词",
+    "description": "GRE等价词",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 827
+  },
+  {
+    "id": "GRE-computer-based-test",
+    "name": "GRE机经词汇",
+    "description": "GRE机经词汇",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 1451
+  },
+  {
+    "id": "gre1500",
+    "name": "GRE重点1500词-fen哥",
+    "description": "GRE & TEM8 重叠高频词汇",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 1532
+  },
+  {
+    "id": "heqiong",
+    "name": "heQiong雅思听力必考词汇",
+    "description": "综合测试",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 2470
+  },
+  {
+    "id": "ielts",
+    "name": "IELTS",
+    "description": "雅思词库",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 3575
+  },
+  {
+    "id": "ielts_disorder",
+    "name": "IELTS乱序完整版",
+    "description": "IELTS乱序完整版",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 9389
+  },
+  {
+    "id": "ielts_order",
+    "name": "IELTS顺序完整版",
+    "description": "IELTS顺序完整版",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 9389
+  },
+  {
+    "id": "pet-2024",
+    "name": "PET-2024",
+    "description": "剑桥英语 - 2024",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 1537
+  },
+  {
+    "id": "Common-Phrases-PTE-Unofficial",
+    "name": "PTE 常用短语 (非官方)",
+    "description": "PTE 常用短语",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 274
+  },
+  {
+    "id": "PTE_senior",
+    "name": "PTE 高阶词汇",
+    "description": "PTE 高阶词汇",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 3141
+  },
+  {
+    "id": "PTE_Advanced_apeuni.json",
+    "name": "PTE 高阶词汇 xingji",
+    "description": "PTE 高阶词汇 xingji",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 3169
+  },
+  {
+    "id": "PTE_junior",
+    "name": "PTE 基础词汇",
+    "description": "PTE 基础词汇",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 2649
+  },
+  {
+    "id": "PTE_Basic_apeuni",
+    "name": "PTE 基础词汇 xingji",
+    "description": "PTE 基础词汇 xingji",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 2651
+  },
+  {
+    "id": "PTE_Listening_apeuni.json",
+    "name": "PTE 听力FIB机经词汇 xingji",
+    "description": "PTE 听力FIB机经词汇 xingji",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 674
+  },
+  {
+    "id": "PTE_Read_apeuni.json",
+    "name": "PTE 阅读FIB机经词汇 xingji",
+    "description": "PTE 阅读FIB机经词汇 xingji",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 630
+  },
+  {
+    "id": "PTE_WFDgaopinci.json",
+    "name": "PTE WFD高频词汇",
+    "description": "WFD高频词汇从高到低，最低掌握350个",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 1174
+  },
+  {
+    "id": "sat",
+    "name": "SAT",
+    "description": "美国 SAT 考试词库",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 4463
+  },
+  {
+    "id": "SATen",
+    "name": "SAT en-en",
+    "description": "SAT英英",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 2679
+  },
+  {
+    "id": "toefl",
+    "name": "TOEFL",
+    "description": "托福考试常见词",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 4264
+  },
+  {
+    "id": "TOEIC",
+    "name": "TOEIC 词汇",
+    "description": "TOEIC 词汇",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 1647
+  },
+  {
+    "id": "voa",
+    "name": "VOA 基础词库",
+    "description": "VOA 基础词库",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 1505
+  },
+  {
+    "id": "IELTSKingLu807",
+    "name": "wanglu807雅思词汇听力第2版",
+    "description": "wanglu807雅思词汇听力第2版",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 1852
+  },
+  {
+    "id": "PTE_WFD",
+    "name": "WFD 机经词汇",
+    "description": "WFD 机经词汇",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 1200
+  },
+  {
+    "id": "IELTS-listening-NeworientalDirect-Task1",
+    "name": "xdf听力 雅思中级直通车 day1",
+    "description": "xdf听力 雅思中级直通车 day1",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 44
+  },
+  {
+    "id": "IELTS-listening-NeworientalDirect-Task10",
+    "name": "xdf听力 雅思中级直通车 day10",
+    "description": "xdf听力 雅思中级直通车 day10",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 44
+  },
+  {
+    "id": "IELTS-listening-NeworientalDirect-Task11",
+    "name": "xdf听力 雅思中级直通车 day11",
+    "description": "xdf听力 雅思中级直通车 day11",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 36
+  },
+  {
+    "id": "IELTS-listening-NeworientalDirect-Task12",
+    "name": "xdf听力 雅思中级直通车 day12",
+    "description": "xdf听力 雅思中级直通车 day12",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 45
+  },
+  {
+    "id": "IELTS-listening-NeworientalDirect-Task13",
+    "name": "xdf听力 雅思中级直通车 day13",
+    "description": "xdf听力 雅思中级直通车 day13",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 49
+  },
+  {
+    "id": "IELTS-listening-NeworientalDirect-Task14",
+    "name": "xdf听力 雅思中级直通车 day14",
+    "description": "xdf听力 雅思中级直通车 day14",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 46
+  },
+  {
+    "id": "IELTS-listening-NeworientalDirect-Task15",
+    "name": "xdf听力 雅思中级直通车 day15",
+    "description": "xdf听力 雅思中级直通车 day15",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 29
+  },
+  {
+    "id": "IELTS-listening-NeworientalDirect-Task16",
+    "name": "xdf听力 雅思中级直通车 day16",
+    "description": "xdf听力 雅思中级直通车 day16",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 42
+  },
+  {
+    "id": "IELTS-listening-NeworientalDirect-Task17",
+    "name": "xdf听力 雅思中级直通车 day17",
+    "description": "xdf听力 雅思中级直通车 day17",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 22
+  },
+  {
+    "id": "IELTS-listening-NeworientalDirect-Task18",
+    "name": "xdf听力 雅思中级直通车 day18",
+    "description": "xdf听力 雅思中级直通车 day18",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 37
+  },
+  {
+    "id": "IELTS-listening-NeworientalDirect-Task19",
+    "name": "xdf听力 雅思中级直通车 day19",
+    "description": "xdf听力 雅思中级直通车 day19",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 26
+  },
+  {
+    "id": "IELTS-listening-NeworientalDirect-Task2",
+    "name": "xdf听力 雅思中级直通车 day2",
+    "description": "xdf听力 雅思中级直通车 day2",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 33
+  },
+  {
+    "id": "IELTS-listening-NeworientalDirect-Task3",
+    "name": "xdf听力 雅思中级直通车 day3",
+    "description": "xdf听力 雅思中级直通车 day3",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 33
+  },
+  {
+    "id": "IELTS-listening-NeworientalDirect-Task4",
+    "name": "xdf听力 雅思中级直通车 day4",
+    "description": "xdf听力 雅思中级直通车 day4",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 33
+  },
+  {
+    "id": "IELTS-listening-NeworientalDirect-Task5",
+    "name": "xdf听力 雅思中级直通车 day5",
+    "description": "xdf听力 雅思中级直通车 day5",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 38
+  },
+  {
+    "id": "IELTS-listening-NeworientalDirect-Task6",
+    "name": "xdf听力 雅思中级直通车 day6",
+    "description": "xdf听力 雅思中级直通车 day6",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 33
+  },
+  {
+    "id": "IELTS-listening-NeworientalDirect-Task7",
+    "name": "xdf听力 雅思中级直通车 day7",
+    "description": "xdf听力 雅思中级直通车 day7",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 39
+  },
+  {
+    "id": "IELTS-listening-NeworientalDirect-Task8",
+    "name": "xdf听力 雅思中级直通车 day8",
+    "description": "xdf听力 雅思中级直通车 day8",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 32
+  },
+  {
+    "id": "IELTS-listening-NeworientalDirect-Task9",
+    "name": "xdf听力 雅思中级直通车 day9",
+    "description": "xdf听力 雅思中级直通车 day9",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 46
+  },
+  {
+    "id": "TOEFL_ZhangHongYan",
+    "name": "ZhangHongYan的TOEFL词汇书",
+    "description": "ZhangHongYan的TOEFL词汇书-词以类记",
+    "level": "国际考试",
+    "category": "国际考试",
+    "language": "en",
+    "cover": "🌍",
+    "wordCount": 3550
+  },
+  {
+    "id": "roger",
+    "name": "Roger's Words",
+    "description": "学习、工作常用英语",
+    "level": "英语词典",
+    "category": "英语词典",
+    "language": "en",
+    "cover": "📖",
+    "wordCount": 4173
+  },
+  {
+    "id": "ba1",
+    "name": "八年级上",
+    "description": "人教版八年级上册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 419
+  },
+  {
+    "id": "ba2",
+    "name": "八年级下",
+    "description": "人教版八年级下册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 463
+  },
+  {
+    "id": "BJJuniorHigh",
+    "name": "北京初中",
+    "description": "北京初中",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 1836
+  },
+  {
+    "id": "gaokao3500",
+    "name": "高考 3500 词",
+    "description": "高考常见词 3500",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 3875
+  },
+  {
+    "id": "gaokaozhentihexin",
+    "name": "高考历年真题核心高频",
+    "description": "高考历年真题核心高频",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 689
+  },
+  {
+    "id": "gaokao-yuedu-gaopin",
+    "name": "高考英语阅读高频词汇",
+    "description": "高考英语阅读高频词汇",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 681
+  },
+  {
+    "id": "renjiaogaozhong1",
+    "name": "高中必修1",
+    "description": "人教版高中必修1",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 311
+  },
+  {
+    "id": "beishi1",
+    "name": "高中必修1",
+    "description": "北师大版高中必修1",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 226
+  },
+  {
+    "id": "renjiaogaozhong2",
+    "name": "高中必修2",
+    "description": "人教版高中必修2",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 319
+  },
+  {
+    "id": "beishi2",
+    "name": "高中必修2",
+    "description": "北师大版高中必修2",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 244
+  },
+  {
+    "id": "renjiaogaozhong3",
+    "name": "高中必修3",
+    "description": "人教版高中必修3",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 366
+  },
+  {
+    "id": "beishi3",
+    "name": "高中必修3",
+    "description": "北师大版高中必修3",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 295
+  },
+  {
+    "id": "renjiaogaozhong4",
+    "name": "高中必修4",
+    "description": "人教版高中必修4",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 307
+  },
+  {
+    "id": "beishi4",
+    "name": "高中必修4",
+    "description": "北师大版高中必修4",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 336
+  },
+  {
+    "id": "renjiaogaozhong5",
+    "name": "高中必修5",
+    "description": "人教版高中必修5",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 357
+  },
+  {
+    "id": "beishi5",
+    "name": "高中必修5",
+    "description": "北师大版高中必修5",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 327
+  },
+  {
+    "id": "renjiaogaozhong10",
+    "name": "高中选修10",
+    "description": "人教版高中选修10",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 361
+  },
+  {
+    "id": "beishi10",
+    "name": "高中选修10",
+    "description": "北师大版高中选修10",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 267
+  },
+  {
+    "id": "renjiaogaozhong11",
+    "name": "高中选修11",
+    "description": "人教版高中选修11",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 309
+  },
+  {
+    "id": "beishi11",
+    "name": "高中选修11",
+    "description": "北师大版高中选修11",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 330
+  },
+  {
+    "id": "renjiaogaozhong6",
+    "name": "高中选修6",
+    "description": "人教版高中选修6",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 391
+  },
+  {
+    "id": "beishi6",
+    "name": "高中选修6",
+    "description": "北师大版高中选修6",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 271
+  },
+  {
+    "id": "renjiaogaozhong7",
+    "name": "高中选修7",
+    "description": "人教版高中选修7",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 384
+  },
+  {
+    "id": "beishi7",
+    "name": "高中选修7",
+    "description": "北师大版高中选修7",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 334
+  },
+  {
+    "id": "renjiaogaozhong8",
+    "name": "高中选修8",
+    "description": "人教版高中选修8",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 420
+  },
+  {
+    "id": "beishi8",
+    "name": "高中选修8",
+    "description": "北师大版高中选修8",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 364
+  },
+  {
+    "id": "renjiaogaozhong9",
+    "name": "高中选修9",
+    "description": "人教版高中选修9",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 352
+  },
+  {
+    "id": "beishi9",
+    "name": "高中选修9",
+    "description": "北师大版高中选修9",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 299
+  },
+  {
+    "id": "jijiao1",
+    "name": "冀教 3 上",
+    "description": "冀教版三年级起点三年级上",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 74
+  },
+  {
+    "id": "jijiao2",
+    "name": "冀教 3 下",
+    "description": "冀教版三年级起点三年级下",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 76
+  },
+  {
+    "id": "jijiao3",
+    "name": "冀教 4 上",
+    "description": "冀教版三年级起点四年级上",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 78
+  },
+  {
+    "id": "jijiao4",
+    "name": "冀教 4 下",
+    "description": "冀教版三年级起点四年级下",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 83
+  },
+  {
+    "id": "jijiao5",
+    "name": "冀教 5 上",
+    "description": "冀教版三年级起点五年级上",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 79
+  },
+  {
+    "id": "jijiao6",
+    "name": "冀教 5 下",
+    "description": "冀教版三年级起点五年级下",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 89
+  },
+  {
+    "id": "jijiao7",
+    "name": "冀教 6 上",
+    "description": "冀教版三年级起点六年级上",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 66
+  },
+  {
+    "id": "jijiao8",
+    "name": "冀教 6 下",
+    "description": "冀教版三年级起点六年级下",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 51
+  },
+  {
+    "id": "jijiao9",
+    "name": "冀教 7 上",
+    "description": "冀教版三年级起点七年级上",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 557
+  },
+  {
+    "id": "jijiao10",
+    "name": "冀教 7 下",
+    "description": "冀教版三年级起点七年级下",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 513
+  },
+  {
+    "id": "jijiao11",
+    "name": "冀教 8 上",
+    "description": "冀教版三年级起点八年级上",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 420
+  },
+  {
+    "id": "jijiao12",
+    "name": "冀教 8 下",
+    "description": "冀教版三年级起点八年级下",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 487
+  },
+  {
+    "id": "jijiao13",
+    "name": "冀教 9 上",
+    "description": "冀教版三年级起点九年级全册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 636
+  },
+  {
+    "id": "Cambridge_JOIN_IN",
+    "name": "剑桥小学英语 JOIN IN",
+    "description": "外研社和剑桥大学出版社依据《义务教育英语课程标准》要求联合为我国小学生开发的一套英语教材。",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 1232
+  },
+  {
+    "id": "jiu",
+    "name": "九年级",
+    "description": "人教版九年级全册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 551
+  },
+  {
+    "id": "liu1",
+    "name": "六年级上",
+    "description": "人教版六年级上册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 130
+  },
+  {
+    "id": "liu2",
+    "name": "六年级下",
+    "description": "人教版六年级下册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 108
+  },
+  {
+    "id": "qi1",
+    "name": "七年级上",
+    "description": "人教版七年级上册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 392
+  },
+  {
+    "id": "qi2",
+    "name": "七年级下",
+    "description": "人教版七年级下册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 492
+  },
+  {
+    "id": "pep-sl-er1",
+    "name": "人教版(新起点)二年级上",
+    "description": "人教版二年级上册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 54
+  },
+  {
+    "id": "pep-sl-er2",
+    "name": "人教版(新起点)二年级下",
+    "description": "人教版二年级下册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 55
+  },
+  {
+    "id": "pep-sl-liu1",
+    "name": "人教版(新起点)六年级上",
+    "description": "人教版六年级上册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 99
+  },
+  {
+    "id": "pep-sl-liu2",
+    "name": "人教版(新起点)六年级下",
+    "description": "人教版六年级下册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 41
+  },
+  {
+    "id": "pep-sl-san1",
+    "name": "人教版(新起点)三年级上",
+    "description": "人教版三年级上册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 101
+  },
+  {
+    "id": "pep-sl-san2",
+    "name": "人教版(新起点)三年级下",
+    "description": "人教版三年级下册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 84
+  },
+  {
+    "id": "pep-sl-si1",
+    "name": "人教版(新起点)四年级上",
+    "description": "人教版四年级上册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 116
+  },
+  {
+    "id": "pep-sl-si2",
+    "name": "人教版(新起点)四年级下",
+    "description": "人教版四年级下册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 86
+  },
+  {
+    "id": "pep-sl-wu1",
+    "name": "人教版(新起点)五年级上",
+    "description": "人教版五年级上册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 66
+  },
+  {
+    "id": "pep-sl-wu2",
+    "name": "人教版(新起点)五年级下",
+    "description": "人教版五年级下册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 96
+  },
+  {
+    "id": "pep-sl-yi1",
+    "name": "人教版(新起点)一年级上",
+    "description": "人教版一年级上册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 52
+  },
+  {
+    "id": "pep-sl-yi2",
+    "name": "人教版(新起点)一年级下",
+    "description": "人教版一年级下册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 45
+  },
+  {
+    "id": "san1",
+    "name": "三年级上",
+    "description": "人教版三年级上册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 64
+  },
+  {
+    "id": "san2",
+    "name": "三年级下",
+    "description": "人教版三年级下册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 72
+  },
+  {
+    "id": "SHjuniormiddleOxford",
+    "name": "上海初中牛津词汇",
+    "description": "上海初中牛津词汇",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 1258
+  },
+  {
+    "id": "shanghai-6-2word",
+    "name": "上海新教材六年级下",
+    "description": "上海新教材六年级下",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 274
+  },
+  {
+    "id": "si1",
+    "name": "四年级上",
+    "description": "人教版四年级上册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 84
+  },
+  {
+    "id": "si2",
+    "name": "四年级下",
+    "description": "人教版四年级下册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 104
+  },
+  {
+    "id": "waiyan3",
+    "name": "外研八年级上册",
+    "description": "外研版八年级上册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 317
+  },
+  {
+    "id": "waiyan4",
+    "name": "外研八年级下册",
+    "description": "外研版八年级下册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 263
+  },
+  {
+    "id": "waiyan11",
+    "name": "外研二年级上册",
+    "description": "外研二年级上册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 117
+  },
+  {
+    "id": "waiyan12",
+    "name": "外研二年级下册",
+    "description": "外研二年级下册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 109
+  },
+  {
+    "id": "waiyan7",
+    "name": "外研高中必修1",
+    "description": "外研高中必修1",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 410
+  },
+  {
+    "id": "waiyan8",
+    "name": "外研高中必修2",
+    "description": "外研高中必修2",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 272
+  },
+  {
+    "id": "waiyan5",
+    "name": "外研九年级上册",
+    "description": "外研版九年级上册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 378
+  },
+  {
+    "id": "waiyan6",
+    "name": "外研九年级下册",
+    "description": "外研版九年级下册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 127
+  },
+  {
+    "id": "waiyan19",
+    "name": "外研六年级上册",
+    "description": "外研六年级上册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 61
+  },
+  {
+    "id": "waiyan20",
+    "name": "外研六年级下册",
+    "description": "外研六年级下册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 91
+  },
+  {
+    "id": "waiyan1",
+    "name": "外研七年级上册",
+    "description": "外研版七年级上册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 619
+  },
+  {
+    "id": "waiyan2",
+    "name": "外研七年级下册",
+    "description": "外研版七年级下册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 430
+  },
+  {
+    "id": "waiyan13",
+    "name": "外研三年级上册",
+    "description": "外研三年级上册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 82
+  },
+  {
+    "id": "waiyan14",
+    "name": "外研三年级下册",
+    "description": "外研三年级下册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 104
+  },
+  {
+    "id": "waiyan15",
+    "name": "外研四年级上册",
+    "description": "外研四年级上册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 111
+  },
+  {
+    "id": "waiyan16",
+    "name": "外研四年级下册",
+    "description": "外研四年级下册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 78
+  },
+  {
+    "id": "waiyan17",
+    "name": "外研五年级上册",
+    "description": "外研五年级上册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 80
+  },
+  {
+    "id": "waiyan18",
+    "name": "外研五年级下册",
+    "description": "外研五年级下册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 71
+  },
+  {
+    "id": "waiyan6-1",
+    "name": "外研新起点六年级上册",
+    "description": "外研新起点六年级上册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 83
+  },
+  {
+    "id": "waiyan6-2",
+    "name": "外研新起点六年级下册",
+    "description": "外研新起点六年级下册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 105
+  },
+  {
+    "id": "waiyan3-1",
+    "name": "外研新起点三年级上册",
+    "description": "外研新起点三年级上册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 134
+  },
+  {
+    "id": "waiyan3-2",
+    "name": "外研新起点三年级下册",
+    "description": "外研新起点三年级下册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 154
+  },
+  {
+    "id": "waiyan4-1",
+    "name": "外研新起点四年级上册",
+    "description": "外研新起点四年级上册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 144
+  },
+  {
+    "id": "waiyan4-2",
+    "name": "外研新起点四年级下册",
+    "description": "外研新起点四年级下册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 130
+  },
+  {
+    "id": "waiyan5-1",
+    "name": "外研新起点五年级上册",
+    "description": "外研新起点五年级上册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 150
+  },
+  {
+    "id": "waiyan5-2",
+    "name": "外研新起点五年级下册",
+    "description": "外研新起点五年级下册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 144
+  },
+  {
+    "id": "waiyan9",
+    "name": "外研一年级上册",
+    "description": "外研一年级上册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 137
+  },
+  {
+    "id": "waiyan10",
+    "name": "外研一年级下册",
+    "description": "外研一年级下册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 117
+  },
+  {
+    "id": "wu1",
+    "name": "五年级上",
+    "description": "人教版五年级上册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 131
+  },
+  {
+    "id": "wu2",
+    "name": "五年级下",
+    "description": "人教版五年级下册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 156
+  },
+  {
+    "id": "nce1",
+    "name": "新概念英语-1",
+    "description": "新概念英语第一册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 861
+  },
+  {
+    "id": "nce2",
+    "name": "新概念英语-2",
+    "description": "新概念英语第二册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 833
+  },
+  {
+    "id": "nce3",
+    "name": "新概念英语-3",
+    "description": "新概念英语第三册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 1038
+  },
+  {
+    "id": "nce4",
+    "name": "新概念英语-4",
+    "description": "新概念英语第四册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 775
+  },
+  {
+    "id": "nce-new-1",
+    "name": "新概念英语(新版)-1",
+    "description": "新概念英语新版第一册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 867
+  },
+  {
+    "id": "nce-new-2",
+    "name": "新概念英语(新版)-2",
+    "description": "新概念英语新版第二册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 840
+  },
+  {
+    "id": "nce-new-3",
+    "name": "新概念英语(新版)-3",
+    "description": "新概念英语新版第三册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 1049
+  },
+  {
+    "id": "nce-new-4",
+    "name": "新概念英语(新版)-4",
+    "description": "新概念英语新版第四册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 784
+  },
+  {
+    "id": "new-waiyan1",
+    "name": "新外研七年级上册",
+    "description": "新外研版七年级上册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 294
+  },
+  {
+    "id": "new-waiyan2",
+    "name": "新外研七年级下册",
+    "description": "新外研版七年级下册",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 305
+  },
+  {
+    "id": "zhongkaohexin",
+    "name": "中考核心词",
+    "description": "中考核心词",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 2135
+  },
+  {
+    "id": "eflevel1",
+    "name": "EF-LEVEL-1",
+    "description": "EF等级1",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 255
+  },
+  {
+    "id": "eflevel10",
+    "name": "EF-LEVEL-10",
+    "description": "EF等级10",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 170
+  },
+  {
+    "id": "eflevel11",
+    "name": "EF-LEVEL-11",
+    "description": "EF等级11",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 170
+  },
+  {
+    "id": "eflevel12",
+    "name": "EF-LEVEL-12",
+    "description": "EF等级12",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 166
+  },
+  {
+    "id": "eflevel13",
+    "name": "EF-LEVEL-13",
+    "description": "EF等级13",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 169
+  },
+  {
+    "id": "eflevel14",
+    "name": "EF-LEVEL-14",
+    "description": "EF等级14",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 167
+  },
+  {
+    "id": "eflevel15",
+    "name": "EF-LEVEL-15",
+    "description": "EF等级15",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 162
+  },
+  {
+    "id": "eflevel16",
+    "name": "EF-LEVEL-16",
+    "description": "EF等级16",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 169
+  },
+  {
+    "id": "eflevel2",
+    "name": "EF-LEVEL-2",
+    "description": "EF等级2",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 316
+  },
+  {
+    "id": "eflevel3",
+    "name": "EF-LEVEL-3",
+    "description": "EF等级3",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 168
+  },
+  {
+    "id": "eflevel4",
+    "name": "EF-LEVEL-4",
+    "description": "EF等级4",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 177
+  },
+  {
+    "id": "eflevel5",
+    "name": "EF-LEVEL-5",
+    "description": "EF等级5",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 170
+  },
+  {
+    "id": "eflevel6",
+    "name": "EF-LEVEL-6",
+    "description": "EF等级6",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 167
+  },
+  {
+    "id": "eflevel7",
+    "name": "EF-LEVEL-7",
+    "description": "EF等级7",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 167
+  },
+  {
+    "id": "eflevel8",
+    "name": "EF-LEVEL-8",
+    "description": "EF等级8",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 168
+  },
+  {
+    "id": "eflevel9",
+    "name": "EF-LEVEL-9",
+    "description": "EF等级9",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 161
+  },
+  {
+    "id": "raz-all",
+    "name": "RAZ 分级阅读 所有词汇",
+    "description": "RAZ 分级阅读 所有词汇",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 5831
+  },
+  {
+    "id": "raz-A",
+    "name": "RAZ 分级阅读 A",
+    "description": "RAZ 分级阅读 A",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 487
+  },
+  {
+    "id": "raz-AA",
+    "name": "RAZ 分级阅读 AA",
+    "description": "RAZ 分级阅读 AA",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 422
+  },
+  {
+    "id": "raz-B",
+    "name": "RAZ 分级阅读 B",
+    "description": "RAZ 分级阅读 B",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 465
+  },
+  {
+    "id": "raz-C",
+    "name": "RAZ 分级阅读 C",
+    "description": "RAZ 分级阅读 C",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 480
+  },
+  {
+    "id": "raz-D",
+    "name": "RAZ 分级阅读 D",
+    "description": "RAZ 分级阅读 D",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 436
+  },
+  {
+    "id": "raz-E",
+    "name": "RAZ 分级阅读 E",
+    "description": "RAZ 分级阅读 E",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 427
+  },
+  {
+    "id": "raz-F",
+    "name": "RAZ 分级阅读 F",
+    "description": "RAZ 分级阅读 F",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 437
+  },
+  {
+    "id": "raz-G",
+    "name": "RAZ 分级阅读 G",
+    "description": "RAZ 分级阅读 G",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 435
+  },
+  {
+    "id": "raz-H",
+    "name": "RAZ 分级阅读 H",
+    "description": "RAZ 分级阅读 H",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 385
+  },
+  {
+    "id": "raz-I",
+    "name": "RAZ 分级阅读 I",
+    "description": "RAZ 分级阅读 I",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 408
+  },
+  {
+    "id": "raz-J",
+    "name": "RAZ 分级阅读 J",
+    "description": "RAZ 分级阅读 J",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 434
+  },
+  {
+    "id": "raz-K",
+    "name": "RAZ 分级阅读 K",
+    "description": "RAZ 分级阅读 K",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 397
+  },
+  {
+    "id": "raz-L",
+    "name": "RAZ 分级阅读 L",
+    "description": "RAZ 分级阅读 L",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 402
+  },
+  {
+    "id": "raz-M",
+    "name": "RAZ 分级阅读 M",
+    "description": "RAZ 分级阅读 M",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 403
+  },
+  {
+    "id": "raz-N",
+    "name": "RAZ 分级阅读 N",
+    "description": "RAZ 分级阅读 N",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 376
+  },
+  {
+    "id": "raz-O",
+    "name": "RAZ 分级阅读 O",
+    "description": "RAZ 分级阅读 O",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 429
+  },
+  {
+    "id": "raz-P",
+    "name": "RAZ 分级阅读 P",
+    "description": "RAZ 分级阅读 P",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 379
+  },
+  {
+    "id": "raz-Q",
+    "name": "RAZ 分级阅读 Q",
+    "description": "RAZ 分级阅读 Q",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 442
+  },
+  {
+    "id": "raz-R",
+    "name": "RAZ 分级阅读 R",
+    "description": "RAZ 分级阅读 R",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 422
+  },
+  {
+    "id": "raz-S",
+    "name": "RAZ 分级阅读 S",
+    "description": "RAZ 分级阅读 S",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 434
+  },
+  {
+    "id": "raz-T",
+    "name": "RAZ 分级阅读 T",
+    "description": "RAZ 分级阅读 T",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 427
+  },
+  {
+    "id": "raz-U",
+    "name": "RAZ 分级阅读 U",
+    "description": "RAZ 分级阅读 U",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 418
+  },
+  {
+    "id": "raz-V",
+    "name": "RAZ 分级阅读 V",
+    "description": "RAZ 分级阅读 V",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 409
+  },
+  {
+    "id": "raz-W",
+    "name": "RAZ 分级阅读 W",
+    "description": "RAZ 分级阅读 W",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 392
+  },
+  {
+    "id": "raz-X",
+    "name": "RAZ 分级阅读 X",
+    "description": "RAZ 分级阅读 X",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 546
+  },
+  {
+    "id": "raz-Y",
+    "name": "RAZ 分级阅读 Y",
+    "description": "RAZ 分级阅读 Y",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 461
+  },
+  {
+    "id": "raz-Z",
+    "name": "RAZ 分级阅读 Z",
+    "description": "RAZ 分级阅读 Z",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 414
+  },
+  {
+    "id": "raz-Z1",
+    "name": "RAZ 分级阅读 Z1",
+    "description": "RAZ 分级阅读 Z1",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 467
+  },
+  {
+    "id": "raz-Z2",
+    "name": "RAZ 分级阅读 Z2",
+    "description": "RAZ 分级阅读 Z2",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 492
+  },
+  {
+    "id": "ReadingExplorer3",
+    "name": "Reading Explorer 3",
+    "description": "词汇表来自Reading Explorer 3, Third Edition",
+    "level": "青少年英语",
+    "category": "青少年英语",
+    "language": "en",
+    "cover": "🧒",
+    "wordCount": 239
+  },
+  {
+    "id": "biomedical-terms",
+    "name": "生物医学专业英语词汇",
+    "description": "生物医学专业英语词汇",
+    "level": "专业词汇",
+    "category": "专业词汇",
+    "language": "en",
+    "cover": "🎓",
+    "wordCount": 536
+  },
+  {
+    "id": "ai-machine-learning",
+    "name": "人工智能: 机器学习",
+    "description": "AI机器学习 常用英语词汇",
+    "level": "代码练习",
+    "category": "代码练习",
+    "language": "code",
+    "cover": "💻",
+    "wordCount": 725
+  },
+  {
+    "id": "ai-ai-for-science",
+    "name": "人工智能: AI for Science",
+    "description": "AI for Science 常用英语词汇",
+    "level": "代码练习",
+    "category": "代码练习",
+    "language": "code",
+    "cover": "💻",
+    "wordCount": 491
+  },
+  {
+    "id": "childCode003",
+    "name": "少儿 C++",
+    "description": "少儿 C++ 常见词",
+    "level": "代码练习",
+    "category": "代码练习",
+    "language": "en",
+    "cover": "💻",
+    "wordCount": 39
+  },
+  {
+    "id": "childCode",
+    "name": "少儿 Python",
+    "description": "少儿 Python 常见词",
+    "level": "代码练习",
+    "category": "代码练习",
+    "language": "en",
+    "cover": "💻",
+    "wordCount": 19
+  },
+  {
+    "id": "childCode002",
+    "name": "少儿 Python Turtle",
+    "description": "少儿 Python Turtle 常见词",
+    "level": "代码练习",
+    "category": "代码练习",
+    "language": "en",
+    "cover": "💻",
+    "wordCount": 27
+  },
+  {
+    "id": "childCode004",
+    "name": "Arduino",
+    "description": "Arduino常见词",
+    "level": "代码练习",
+    "category": "代码练习",
+    "language": "en",
+    "cover": "💻",
+    "wordCount": 78
+  },
+  {
+    "id": "SoundSfxKey2",
+    "name": "AudioKey_UCS-Category",
+    "description": "游戏音效常用单词-UCS-Category",
+    "level": "代码练习",
+    "category": "代码练习",
+    "language": "code",
+    "cover": "💻",
+    "wordCount": 82
+  },
+  {
+    "id": "SoundSfxKey",
+    "name": "AudioKey_UCS-SubCategory",
+    "description": "游戏音效常用单词-UCS-SubCategory",
+    "level": "代码练习",
+    "category": "代码练习",
+    "language": "en",
+    "cover": "💻",
+    "wordCount": 405
+  },
+  {
+    "id": "csharpList",
+    "name": "C#: List API",
+    "description": "C# List API",
+    "level": "代码练习",
+    "category": "代码练习",
+    "language": "code",
+    "cover": "💻",
+    "wordCount": 36
+  },
+  {
+    "id": "csharpString",
+    "name": "C#: String API",
+    "description": "C# String API",
+    "level": "代码练习",
+    "category": "代码练习",
+    "language": "code",
+    "cover": "💻",
+    "wordCount": 79
+  },
+  {
+    "id": "csharpKeywords",
+    "name": "C#关键字",
+    "description": "C#关键字以及用途",
+    "level": "代码练习",
+    "category": "代码练习",
+    "language": "code",
+    "cover": "💻",
+    "wordCount": 78
+  },
+  {
+    "id": "coder",
+    "name": "Coder Dict",
+    "description": "程序员常见单词词库",
+    "level": "代码练习",
+    "category": "代码练习",
+    "language": "code",
+    "cover": "💻",
+    "wordCount": 1700
+  },
+  {
+    "id": "go_builtin",
+    "name": "golang-builtin",
+    "description": "go语言内建函数和类型",
+    "level": "代码练习",
+    "category": "代码练习",
+    "language": "code",
+    "cover": "💻",
+    "wordCount": 46
+  },
+  {
+    "id": "go_keyword",
+    "name": "golang-keyword",
+    "description": "go语言关键字,",
+    "level": "代码练习",
+    "category": "代码练习",
+    "language": "code",
+    "cover": "💻",
+    "wordCount": 25
+  },
+  {
+    "id": "javeArrayList",
+    "name": "Java: ArrayList",
+    "description": "JavaScript API 词典",
+    "level": "代码练习",
+    "category": "代码练习",
+    "language": "code",
+    "cover": "💻",
+    "wordCount": 25
+  },
+  {
+    "id": "javaCharacter",
+    "name": "Java: Character",
+    "description": "JavaScript API 词典",
+    "level": "代码练习",
+    "category": "代码练习",
+    "language": "code",
+    "cover": "💻",
+    "wordCount": 8
+  },
+  {
+    "id": "javaHashmap",
+    "name": "Java: Hashmap",
+    "description": "JavaScript API 词典",
+    "level": "代码练习",
+    "category": "代码练习",
+    "language": "code",
+    "cover": "💻",
+    "wordCount": 22
+  },
+  {
+    "id": "javaLinkedList",
+    "name": "Java: LinkedList",
+    "description": "JavaScript API 词典",
+    "level": "代码练习",
+    "category": "代码练习",
+    "language": "code",
+    "cover": "💻",
+    "wordCount": 22
+  },
+  {
+    "id": "javaString",
+    "name": "Java: String",
+    "description": "JavaScript API 词典",
+    "level": "代码练习",
+    "category": "代码练习",
+    "language": "code",
+    "cover": "💻",
+    "wordCount": 33
+  },
+  {
+    "id": "javaStringBuffer",
+    "name": "Java: StringBuffer",
+    "description": "JavaScript API 词典",
+    "level": "代码练习",
+    "category": "代码练习",
+    "language": "code",
+    "cover": "💻",
+    "wordCount": 17
+  },
+  {
+    "id": "jsArray",
+    "name": "JS: Array",
+    "description": "JavaScript API 词典",
+    "level": "代码练习",
+    "category": "代码练习",
+    "language": "code",
+    "cover": "💻",
+    "wordCount": 36
+  },
+  {
+    "id": "jsDate",
+    "name": "JS: Date",
+    "description": "JavaScript API 词典",
+    "level": "代码练习",
+    "category": "代码练习",
+    "language": "code",
+    "cover": "💻",
+    "wordCount": 34
+  },
+  {
+    "id": "jsGlobal",
+    "name": "JS: Global",
+    "description": "JavaScript API 词典",
+    "level": "代码练习",
+    "category": "代码练习",
+    "language": "code",
+    "cover": "💻",
+    "wordCount": 9
+  },
+  {
+    "id": "jsMapSet",
+    "name": "JS: Map & Set",
+    "description": "JavaScript API 词典",
+    "level": "代码练习",
+    "category": "代码练习",
+    "language": "code",
+    "cover": "💻",
+    "wordCount": 10
+  },
+  {
+    "id": "jsMath",
+    "name": "JS: Math",
+    "description": "JavaScript API 词典",
+    "level": "代码练习",
+    "category": "代码练习",
+    "language": "code",
+    "cover": "💻",
+    "wordCount": 38
+  },
+  {
+    "id": "jsNumber",
+    "name": "JS: Number",
+    "description": "JavaScript API 词典",
+    "level": "代码练习",
+    "category": "代码练习",
+    "language": "code",
+    "cover": "💻",
+    "wordCount": 22
+  },
+  {
+    "id": "jsObject",
+    "name": "JS: Object",
+    "description": "JavaScript API 词典",
+    "level": "代码练习",
+    "category": "代码练习",
+    "language": "code",
+    "cover": "💻",
+    "wordCount": 36
+  },
+  {
+    "id": "jsPromise",
+    "name": "JS: Promise",
+    "description": "JavaScript API 词典",
+    "level": "代码练习",
+    "category": "代码练习",
+    "language": "code",
+    "cover": "💻",
+    "wordCount": 9
+  },
+  {
+    "id": "jsString",
+    "name": "JS: String",
+    "description": "JavaScript API 词典",
+    "level": "代码练习",
+    "category": "代码练习",
+    "language": "code",
+    "cover": "💻",
+    "wordCount": 32
+  },
+  {
+    "id": "linuxCommand",
+    "name": "Linux",
+    "description": "Linux Command",
+    "level": "代码练习",
+    "category": "代码练习",
+    "language": "code",
+    "cover": "💻",
+    "wordCount": 575
+  },
+  {
+    "id": "oi-xcpc",
+    "name": "OI / XCPC 竞赛词汇",
+    "description": "OI / XCPC 竞赛词汇",
+    "level": "代码练习",
+    "category": "代码练习",
+    "language": "en",
+    "cover": "💻",
+    "wordCount": 190
+  },
+  {
+    "id": "python-array",
+    "name": "Python: array",
+    "description": "Python array API ",
+    "level": "代码练习",
+    "category": "代码练习",
+    "language": "code",
+    "cover": "💻",
+    "wordCount": 11
+  },
+  {
+    "id": "python-builtin",
+    "name": "Python: Built-in",
+    "description": "Python Built-in API",
+    "level": "代码练习",
+    "category": "代码练习",
+    "language": "code",
+    "cover": "💻",
+    "wordCount": 65
+  },
+  {
+    "id": "python-class",
+    "name": "Python: class",
+    "description": "Python class API ",
+    "level": "代码练习",
+    "category": "代码练习",
+    "language": "code",
+    "cover": "💻",
+    "wordCount": 13
+  },
+  {
+    "id": "python-date",
+    "name": "Python: date",
+    "description": "Python date API ",
+    "level": "代码练习",
+    "category": "代码练习",
+    "language": "code",
+    "cover": "💻",
+    "wordCount": 37
+  },
+  {
+    "id": "python-file",
+    "name": "Python: file",
+    "description": "Python file API ",
+    "level": "代码练习",
+    "category": "代码练习",
+    "language": "code",
+    "cover": "💻",
+    "wordCount": 21
+  },
+  {
+    "id": "python-math",
+    "name": "Python: math",
+    "description": "Python math API ",
+    "level": "代码练习",
+    "category": "代码练习",
+    "language": "code",
+    "cover": "💻",
+    "wordCount": 37
+  },
+  {
+    "id": "python-set",
+    "name": "Python: set",
+    "description": "Python set API ",
+    "level": "代码练习",
+    "category": "代码练习",
+    "language": "code",
+    "cover": "💻",
+    "wordCount": 29
+  },
+  {
+    "id": "python-string",
+    "name": "Python: string",
+    "description": "Python string API ",
+    "level": "代码练习",
+    "category": "代码练习",
+    "language": "code",
+    "cover": "💻",
+    "wordCount": 40
+  },
+  {
+    "id": "python-system",
+    "name": "Python: system",
+    "description": "Python system API ",
+    "level": "代码练习",
+    "category": "代码练习",
+    "language": "code",
+    "cover": "💻",
+    "wordCount": 24
+  },
+  {
+    "id": "rustHashMap",
+    "name": "Rust: HashMap",
+    "description": "Rust 集合类型HashMap常用方法",
+    "level": "代码练习",
+    "category": "代码练习",
+    "language": "code",
+    "cover": "💻",
+    "wordCount": 23
+  },
+  {
+    "id": "rustKeyword",
+    "name": "Rust: Keyword",
+    "description": "Rust 关键字",
+    "level": "代码练习",
+    "category": "代码练习",
+    "language": "code",
+    "cover": "💻",
+    "wordCount": 35
+  },
+  {
+    "id": "rustString",
+    "name": "Rust: String",
+    "description": "Rust 标准库字符串类型常用方法",
+    "level": "代码练习",
+    "category": "代码练习",
+    "language": "code",
+    "cover": "💻",
+    "wordCount": 24
+  },
+  {
+    "id": "rustVector",
+    "name": "Rust: Vector",
+    "description": "Rust 集合类型动态数组Vector常用方法",
+    "level": "代码练习",
+    "category": "代码练习",
+    "language": "code",
+    "cover": "💻",
+    "wordCount": 28
+  },
+  {
+    "id": "sql-lower-case",
+    "name": "SQL: 常用语句 lower case",
+    "description": "SQL 常用语句 小写",
+    "level": "代码练习",
+    "category": "代码练习",
+    "language": "code",
+    "cover": "💻",
+    "wordCount": 12
+  },
+  {
+    "id": "sql-upper-case",
+    "name": "SQL: 常用语句 upper case",
+    "description": "SQL 常用语句 大写",
+    "level": "代码练习",
+    "category": "代码练习",
+    "language": "code",
+    "cover": "💻",
+    "wordCount": 12
+  },
+  {
+    "id": "japanese007",
+    "name": "高频单词_N1",
+    "description": "高频单词_日语N1",
+    "level": "日语学习",
+    "category": "日语学习",
+    "language": "romaji",
+    "cover": "🗾",
+    "wordCount": 2937
+  },
+  {
+    "id": "japanese008",
+    "name": "高频单词_N2",
+    "description": "高频单词_日语N2",
+    "level": "日语学习",
+    "category": "日语学习",
+    "language": "romaji",
+    "cover": "🗾",
+    "wordCount": 2426
+  },
+  {
+    "id": "japanese009",
+    "name": "高频单词_N3",
+    "description": "高频单词_日语N3",
+    "level": "日语学习",
+    "category": "日语学习",
+    "language": "romaji",
+    "cover": "🗾",
+    "wordCount": 1957
+  },
+  {
+    "id": "japanese0010",
+    "name": "高频单词_N4N5",
+    "description": "高频单词_日语N4N5",
+    "level": "日语学习",
+    "category": "日语学习",
+    "language": "romaji",
+    "cover": "🗾",
+    "wordCount": 1921
+  },
+  {
+    "id": "japanese001",
+    "name": "日语常见词",
+    "description": "英语翻译",
+    "level": "日语学习",
+    "category": "日语学习",
+    "language": "romaji",
+    "cover": "🗾",
+    "wordCount": 100
+  },
+  {
+    "id": "japanese001-zh",
+    "name": "日语常见词",
+    "description": "中文翻译",
+    "level": "日语学习",
+    "category": "日语学习",
+    "language": "romaji",
+    "cover": "🗾",
+    "wordCount": 100
+  },
+  {
+    "id": "japanese006",
+    "name": "N1",
+    "description": "英语翻译",
+    "level": "日语学习",
+    "category": "日语学习",
+    "language": "romaji",
+    "cover": "🗾",
+    "wordCount": 3282
+  },
+  {
+    "id": "japanese006-zh",
+    "name": "N1",
+    "description": "中文翻译",
+    "level": "日语学习",
+    "category": "日语学习",
+    "language": "romaji",
+    "cover": "🗾",
+    "wordCount": 3281
+  },
+  {
+    "id": "japanese005",
+    "name": "N2",
+    "description": "英语翻译",
+    "level": "日语学习",
+    "category": "日语学习",
+    "language": "romaji",
+    "cover": "🗾",
+    "wordCount": 1743
+  },
+  {
+    "id": "japanese005-zh",
+    "name": "N2",
+    "description": "中文翻译",
+    "level": "日语学习",
+    "category": "日语学习",
+    "language": "romaji",
+    "cover": "🗾",
+    "wordCount": 1776
+  },
+  {
+    "id": "japanese004",
+    "name": "N3",
+    "description": "英语翻译",
+    "level": "日语学习",
+    "category": "日语学习",
+    "language": "romaji",
+    "cover": "🗾",
+    "wordCount": 1694
+  },
+  {
+    "id": "japanese004-zh",
+    "name": "N3",
+    "description": "中文翻译",
+    "level": "日语学习",
+    "category": "日语学习",
+    "language": "romaji",
+    "cover": "🗾",
+    "wordCount": 1702
+  },
+  {
+    "id": "japanese003",
+    "name": "N4",
+    "description": "英语翻译",
+    "level": "日语学习",
+    "category": "日语学习",
+    "language": "romaji",
+    "cover": "🗾",
+    "wordCount": 625
+  },
+  {
+    "id": "japanese003-zh",
+    "name": "N4",
+    "description": "中文翻译",
+    "level": "日语学习",
+    "category": "日语学习",
+    "language": "romaji",
+    "cover": "🗾",
+    "wordCount": 625
+  },
+  {
+    "id": "japanese002",
+    "name": "N5",
+    "description": "英语翻译",
+    "level": "日语学习",
+    "category": "日语学习",
+    "language": "romaji",
+    "cover": "🗾",
+    "wordCount": 646
+  },
+  {
+    "id": "japanese002-zh",
+    "name": "N5",
+    "description": "中文翻译",
+    "level": "日语学习",
+    "category": "日语学习",
+    "language": "romaji",
+    "cover": "🗾",
+    "wordCount": 646
+  },
+  {
+    "id": "german2en",
+    "name": "德语 英译",
+    "description": "德语词汇, 英语翻译",
+    "level": "德语学习",
+    "category": "德语学习",
+    "language": "de",
+    "cover": "🇩🇪",
+    "wordCount": 5829
+  },
+  {
+    "id": "en2german",
+    "name": "英语 德译",
+    "description": "英语词汇，德语翻译",
+    "level": "德语学习",
+    "category": "德语学习",
+    "language": "en",
+    "cover": "🇩🇪",
+    "wordCount": 5020
+  },
+  {
+    "id": "indonesian_highFrequency_3043",
+    "name": "印尼语高频词汇",
+    "description": "印尼语常用单词及中文解释",
+    "level": "印尼语",
+    "category": "印尼语",
+    "language": "id",
+    "cover": "🇮🇩",
+    "wordCount": 3028
+  },
+  {
+    "id": "kazakh_basic_3000_arabic_hapin",
+    "name": "基础3000词(老文字版)",
+    "description": "哈萨克语基础3000词(哈拼老文字版)",
+    "level": "哈萨克语",
+    "category": "哈萨克语",
+    "language": "hapin",
+    "cover": "🇰🇿",
+    "wordCount": 2985
+  },
+  {
+    "id": "kazakh_basic_3000_cyrillic_hapin",
+    "name": "基础3000词(西里尔字母版)",
+    "description": "哈萨克语基础3000词(哈拼西里尔字母版)",
+    "level": "哈萨克语",
+    "category": "哈萨克语",
+    "language": "hapin",
+    "cover": "🇰🇿",
+    "wordCount": 2985
+  },
+  {
+    "id": "jptest",
+    "name": "日文测试",
+    "description": "日文测试词库",
+    "level": "测试",
+    "category": "测试",
+    "language": "ja",
+    "cover": "🧪",
+    "wordCount": 20
+  },
+  {
+    "id": "zhtest",
+    "name": "中文测试",
+    "description": "中文测试词库",
+    "level": "测试",
+    "category": "测试",
+    "language": "zh",
+    "cover": "🧪",
+    "wordCount": 26
   }
 ]

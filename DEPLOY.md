@@ -1,6 +1,6 @@
 # EdgeOne Pages 部署教程
 
-> 适用项目：WordLeap 词跃（Next.js 15 App Router + TypeScript + Tailwind）
+> 适用项目：逆行者单词（Next.js 15 App Router + TypeScript + Tailwind）
 > 平台：腾讯云 EdgeOne Pages（Makers 模式）
 > 最后更新：2026-09-27
 
@@ -94,6 +94,10 @@ AI_API_KEY=sk-你的真实密钥
 |---|---|
 | `ADMIN_USERNAME` / `ADMIN_PASSWORD` | 预置管理员账号。两个变量必须**同时**设置才生效（缺一则跳过）。账号在**首次有人调用登录接口时**由服务端幂等创建，创建后即以 admin 角色存在。不设置则第一个注册的用户自动成为管理员 |
 | `COOKIE_SECURE` | 留空即**自动判定**：`x-forwarded-proto` 为 https 时 `true`，localhost 时 `false`。生产 HTTPS 建议显式设为 `true`；本地 HTTP 调试设 `false` |
+
+> 💡 大模型配置（地址 / 密钥 / 模型 / 温度 / Token 上限）现在是**双轨**的：
+> 环境变量提供**默认值**，登录管理员后可在 **`/admin` → 大模型**里随时覆盖并「测试连通性」，改完立即生效、**无需重新部署**。
+> 配置存放于 KV 的 `config:ai`，密钥对外只返回脱敏值（`ab****yz`）。
 
 **生成 `SESSION_SECRET`（任选一种，复制输出结果）**
 

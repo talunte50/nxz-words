@@ -22,10 +22,10 @@ export async function POST(request: NextRequest) {
 
   const cached = await kv.get<AiWordExplanation>(cacheKey);
   if (cached) {
-    return ok({ explanation: cached, cached: true, aiEnabled: isAiConfigured() });
+    return ok({ explanation: cached, cached: true, aiEnabled: await isAiConfigured() });
   }
 
-  if (!isAiConfigured()) {
+  if (!(await isAiConfigured())) {
     return ok({ explanation: mockExplanation(word), cached: false, aiEnabled: false });
   }
 

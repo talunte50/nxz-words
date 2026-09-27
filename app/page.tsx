@@ -59,7 +59,7 @@ export default function HomePage() {
         <div className="overflow-hidden rounded-3xl bg-gradient-to-br from-brand-600 via-brand-500 to-violet-600 text-white shadow-lg">
           <div className="px-5 pb-6 pt-8 sm:px-8 sm:pt-10">
             <p className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-xs font-medium tracking-wide">
-              ✦ WordLeap 词跃
+              ✦ 逆行者单词
             </p>
             <h1 className="mt-3 text-3xl font-bold leading-tight sm:text-4xl">
               让每一个单词

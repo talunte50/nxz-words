@@ -75,12 +75,25 @@ export default function ProfilePage() {
             <div className="flex items-center gap-2">
               <h1 className="truncate text-lg font-semibold">{profile.nickname}</h1>
               <Badge tone="brand">🔥 {streakDays(activeDates)} 天</Badge>
+              {profile.role === "admin" ? <Badge tone="amber">管理员</Badge> : null}
             </div>
             <p className="mt-1 text-xs text-slate-400 dark:text-slate-500">
               @{profile.username} · 加入于 {profile.createdAt.slice(0, 10)}
             </p>
           </div>
         </div>
+
+        {profile.role === "admin" ? (
+          <Link
+            href="/admin"
+            className="mt-4 flex items-center justify-between rounded-xl border border-brand-200 bg-brand-50 px-4 py-3 text-sm font-medium text-brand-700 transition hover:bg-brand-100 dark:border-brand-500/40 dark:bg-brand-500/10 dark:text-brand-300"
+          >
+            <span className="flex items-center gap-2">
+              <span>🛠️</span> 进入管理后台
+            </span>
+            <span>→</span>
+          </Link>
+        ) : null}
 
         <div className="mt-4 flex flex-wrap gap-2">
           {AVATARS.map((emoji) => (

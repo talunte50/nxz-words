@@ -53,7 +53,7 @@ export async function POST(request: NextRequest) {
         controller.enqueue(encoder.encode(`data: ${JSON.stringify(payload)}\n\n`));
       let full = "";
       try {
-        if (!isAiConfigured()) {
+        if (!(await isAiConfigured())) {
           full = MOCK_TUTOR_REPLY;
           for (const char of Array.from(full)) {
             send({ delta: char });

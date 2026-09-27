@@ -130,3 +130,108 @@ export async function ensurePresetAdmin(): Promise<void> {
 export function isAdminRole(data: UserData): boolean {
   return data.profile.role === "admin";
 }
+
+/* ------------------------- 管理端：用户管理 ------------------------- */
+
+export interface AdminUserRow {
+  uid: string;
+  username: string;
+  nickname: string;
+  role: "admin" | "user";
+  createdAt: string;
+  lastActive: string | null;
+  learned: number;
+  favorites: number;
+  studiedDays: number;
+}
+
+/** 列出账号（含基础学习统计）。数据量小，直接聚合即可。 */
+export async function listUsers(): Promise<AdminUserRow[]> {
+  const kv = getKV();
+  const keys = await kv.list(AUTH_PREFIX);
+  const rows: AdminUserRow[] = [];
+  for (const key of keys) {
+    const record = await kv.get<AuthRecord>(key);
+    if (!record) continue;
+    const data = await getUserData(record.uid);
+    const learned = data ? Object.values(data.reviews).filter((r) => r.reps > 0).length : 0;
+    const studiedDays = data ? data.stats.filter((s) => s.newCount + s.reviewCount > 0).length : 0;
+    const lastReview = data
+      ? Object.values(data.reviews)
+          .map((r) => r.lastReview)
+          .filter((v): v is string => Boolean(v))
+          .sort()
+          .pop()
+      : undefined;
+    rows.push({
+      uid: record.uid,
+      username: record.username,
+      nickname: data?.profile.nickname ?? record.username,
+      role: data?.profile.role ?? "user",
+      createdAt: record.createdAt,
+      lastActive: lastReview ?? null,
+      learned,
+      favorites: data?.favorites.length ?? 0,
+      studiedDays,
+    });
+  }
+  rows.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+  return rows;
+}
+
+export async function findAuthByUid(uid: string): Promise<(AuthRecord & { key: string }) | null> {
+  const kv = getKV();
+  const keys = await kv.list(AUTH_PREFIX);
+  for (const key of keys) {
+    const record = await kv.get<AuthRecord>(key);
+    if (record?.uid === uid) return { ...record, key };
+  }
+  return null;
+}
+
+export async function adminResetPassword(uid: string, password: string): Promise<void> {
+  const kv = getKV();
+  const found = await findAuthByUid(uid);
+  if (!found) throw new Error("账号不存在");
+  const record: AuthRecord = {
+    uid: found.uid,
+    username: found.username,
+    passwordHash: await hashPassword(password),
+    createdAt: found.createdAt,
+  };
+  await kv.put(found.key, record);
+}
+
+export async function adminDeleteUser(uid: string): Promise<void> {
+  const kv = getKV();
+  const found = await findAuthByUid(uid);
+  if (!found) throw new Error("账号不存在");
+  await kv.delete(found.key);
+  await kv.delete(userKey(uid));
+}
+
+export async function adminCreateUser(
+  username: string,
+  password: string,
+  role: "admin" | "user" = "user",
+): Promise<UserData> {
+  const data = await registerUser(username, password);
+  if (role === "admin" && data.profile.role !== "admin") {
+    data.profile.role = "admin";
+    await saveUserData(data);
+  }
+  return data;
+}
+
+export async function adminSetRole(uid: string, role: "admin" | "user"): Promise<void> {
+  const data = await getUserData(uid);
+  if (!data) throw new Error("用户数据不存在");
+  data.profile.role = role;
+  await saveUserData(data);
+}
+
+/** 管理员总数，用于阻止「删掉最后一个管理员」 */
+export async function countAdmins(): Promise<number> {
+  const rows = await listUsers();
+  return rows.filter((r) => r.role === "admin").length;
+}

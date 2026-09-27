@@ -1,7 +1,8 @@
 import type { NextRequest } from "next/server";
 import { errorMessage, fail, ok } from "@/lib/api";
 import { buildSession, setSession } from "@/lib/auth/session";
-import { ensurePresetAdmin, loginOrRegister } from "@/lib/store/user-store";
+import { getSiteConfig } from "@/lib/config/site";
+import { ensurePresetAdmin, loginOrRegister, listUsers } from "@/lib/store/user-store";
 
 export const dynamic = "force-dynamic";
 
@@ -30,6 +31,15 @@ export async function POST(request: NextRequest) {
   await bootAdmin();
 
   try {
+    // 关闭注册时，只允许已存在的账号登录（管理员可在后台开启注册）
+    const config = await getSiteConfig();
+    if (!config.allowRegister) {
+      const exists = (await listUsers()).some(
+        (u) => u.username.toLowerCase() === username.toLowerCase(),
+      );
+      if (!exists) return fail("本站暂未开放注册，请联系管理员开通账号", 403);
+    }
+
     const data = await loginOrRegister(username, password);
     await setSession(buildSession(data.profile.id, data.profile.username));
     return ok({ profile: data.profile });

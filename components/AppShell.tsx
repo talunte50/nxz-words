@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { createContext, useCallback, useContext, useEffect, useState } from "react";
 import type { UserProfile } from "@/lib/types";
 import { apiGet, apiSend } from "@/lib/client/api";
+import { SITE_NAME } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
 interface MeResponse {
@@ -14,6 +15,21 @@ interface MeResponse {
   dueCount: number;
   favorites: number;
 }
+
+/** 运行期站点信息（管理端可改），失败时回退到构建期常量 */
+interface SiteInfo {
+  name: string;
+  announcement: string;
+  footerText: string;
+  allowRegister: boolean;
+}
+
+const FALLBACK_SITE: SiteInfo = {
+  name: SITE_NAME,
+  announcement: "",
+  footerText: "",
+  allowRegister: true,
+};
 
 export interface UserContextValue {
   profile: UserProfile | null;
@@ -54,6 +70,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
     favorites: 0,
     ready: false,
   });
+  const [site, setSite] = useState<SiteInfo>(FALLBACK_SITE);
 
   const refresh = useCallback(async () => {
     try {
@@ -66,6 +83,10 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     void refresh();
+    // 拉取运行期站点配置（管理端可改品牌名/公告/页脚）
+    apiGet<SiteInfo>("/api/site")
+      .then((info) => setSite({ ...FALLBACK_SITE, ...info }))
+      .catch(() => setSite(FALLBACK_SITE));
   }, [refresh]);
 
   useEffect(() => {
@@ -95,9 +116,9 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           <div className="flex items-center justify-between px-4 pb-3 pt-[calc(0.5rem+env(safe-area-inset-top))]">
             <Link href="/" className="flex items-center gap-2">
               <span className="grid h-8 w-8 place-items-center rounded-xl bg-brand-500 text-sm font-bold text-white">
-                W
+                逆
               </span>
-              <span className="text-base font-semibold tracking-tight">WordLeap 词跃</span>
+              <span className="text-base font-semibold tracking-tight">{site.name}</span>
             </Link>
             {state.profile ? (
               <Link
@@ -123,7 +144,19 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           </div>
         </header>
 
+        {site.announcement ? (
+          <div className="border-b border-amber-200 bg-amber-50 px-4 py-2 text-center text-xs text-amber-800 dark:border-amber-500/30 dark:bg-amber-500/10 dark:text-amber-300">
+            📢 {site.announcement}
+          </div>
+        ) : null}
+
         <main className="flex-1 px-4 pb-[calc(4.5rem+env(safe-area-inset-bottom))] pt-4">{children}</main>
+
+        {site.footerText && !isAuthPage ? (
+          <footer className="pb-[calc(5rem+env(safe-area-inset-bottom))] pt-2 text-center text-[11px] text-slate-400 dark:text-slate-500">
+            {site.footerText}
+          </footer>
+        ) : null}
 
         {!isAuthPage ? (
           <nav className="fixed inset-x-0 bottom-0 z-20 border-t border-slate-200 bg-white/95 pb-[env(safe-area-inset-bottom)] backdrop-blur dark:border-slate-800 dark:bg-slate-900/95">

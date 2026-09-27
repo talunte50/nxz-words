@@ -1,6 +1,6 @@
 # GitHub 推送 + EdgeOne Pages 部署 · 操作手册
 
-> 适用项目：WordLeap 词跃（Next.js 15 + TypeScript + Tailwind 3）
+> 适用项目：逆行者单词（Next.js 15 + TypeScript + Tailwind 3）
 > 本文只讲「敲什么命令、点哪个按钮」；原理与排查见 `DEPLOY.md`。
 > 最后校准：2026-09-27（已核对代码实际行为）
 

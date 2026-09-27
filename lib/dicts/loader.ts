@@ -40,7 +40,19 @@ export async function loadBook(id: string): Promise<WordBook | null> {
   return book;
 }
 
+// 词书 id 可能自身含下划线（如 `kaoyan_2024`、`BeiShiGaoZhong_1_T`），
+// 而 wordId 形如 `<bookId>_00001`。因此不能用「第一个下划线」切分，
+// 必须做**最长前缀匹配**：取所有已知 bookId 中能作为前缀的最长者。
+const BOOK_IDS_BY_LEN = [...Object.keys(LOADERS)].sort(
+  (a, b) => b.length - a.length
+);
+
 export function bookIdFromWordId(wordId: string): string {
+  if (!wordId) return "";
+  for (const id of BOOK_IDS_BY_LEN) {
+    if (wordId.startsWith(`${id}_`)) return id;
+  }
+  // 回退：兼容 manifest 之外的旧数据
   const at = wordId.indexOf("_");
   return at > 0 ? wordId.slice(0, at) : "";
 }

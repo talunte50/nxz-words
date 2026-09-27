@@ -1,5 +1,7 @@
 import { currentUser, ok } from "@/lib/api";
-import { listWordBooks } from "@/lib/wordbooks-server";
+import { getBookOverrides } from "@/lib/config/books";
+import { bookIdFromWordId } from "@/lib/dicts/loader";
+import { listEnabledWordBooks } from "@/lib/wordbooks-server";
 
 export const dynamic = "force-dynamic";
 
@@ -10,18 +12,21 @@ export async function GET() {
   if (context) {
     for (const [wordId, state] of Object.entries(context.data.reviews)) {
       if (state.reps <= 0) continue;
-      const at = wordId.indexOf("_");
-      if (at <= 0) continue;
-      const bookId = wordId.slice(0, at);
+      // 注意：bookId 自身可能含下划线，必须用最长前缀匹配而非 indexOf("_")
+      const bookId = bookIdFromWordId(wordId);
+      if (!bookId) continue;
       learnedByBook.set(bookId, (learnedByBook.get(bookId) ?? 0) + 1);
     }
   }
 
-  const books = listWordBooks().map((book) => ({
+  // 前端只看到「已启用」的词库；管理端可在 /api/admin/books 停用词库
+  const overrides = await getBookOverrides();
+  const books = listEnabledWordBooks(overrides).map((book) => ({
     ...book,
     learned: learnedByBook.get(book.id) ?? 0,
   }));
 
+  // 词书数过多时，接口默认只返回清单 + 已学统计，词条仍按需加载
   return ok({
     books,
     currentBookId: context?.data.profile.currentBookId ?? "cet4",
