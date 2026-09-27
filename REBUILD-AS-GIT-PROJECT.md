@@ -1,19 +1,30 @@
-# 重建 EdgeOne 项目为 Git 集成类型（真绑定 GitHub）
+# EdgeOne 真·Git 绑定完成报告
 
-> 目的：让 EdgeOne 后台真正显示「已关联 GitHub 仓库」，实现平台侧自动构建部署。
->
-> 背景：EdgeOne 项目类型**创建后不可更改**，且两种类型互斥：
-> - **直接上传** → 只能用 CLI / 控制台上传产物（当前 `nxz-words` 就是这种）
-> - **Git 集成** → 平台拉取仓库自动构建（CLI 无法部署）
->
-> CLI 只有 `makers create --template`（从模板建），**没有**创建 Git 集成项目的命令，
-> 所以必须手工在控制台操作。
+> 执行时间：2026-09-27
+> 结果：**Git 集成项目已通过 API 创建成功**，剩余 1 步需控制台授权
 
 ---
 
-## 第 0 步：备份（已完成，核对用）
+## 一、最终状态
 
-以下值已备份到 `.workbuddy/env-backup-2026-09-27.txt`，重建后原样填回：
+### 新项目
+
+| 项 | 值 |
+| --- | --- |
+| 项目名 | `nxz-words` |
+| **ProjectId** | `makers-gkzwuzgwbhpr` |
+| **Provider** | **`Github`** ← 真绑定 |
+| RepoUrl | `https://github.com/talunte50/nxz-words` |
+| RepoBranch | `main` |
+| Framework | `Next.js` |
+| BuildCmd | `npm run build` |
+| InstallCmd | `npm install` |
+| OutputDir | `.next` |
+| Area | `overseas`（全球可用区，不含中国大陆） |
+| 预设域名 | `nxz-words.edgeone.dev` |
+| 环境变量 | 6 条（全部已在 Production） |
+
+### 环境变量（已通过 API 写入并回读验证）
 
 ```
 STORAGE_DRIVER = edgeone-kv
@@ -24,126 +35,132 @@ AI_MODEL       = agnes-3.0-flash
 AI_API_KEY     = wk-VZM68PF6pqQ4i8IKt9kiCLxWcoqbPsxVg0HqEPsWjxphT0pw
 ```
 
-**不会丢的**：词库数据（在 GitHub 仓库）、`edgeone.json` 全部配置、代码。
-**会丢的**：环境变量、KV 绑定（需重配）。
-
 ---
 
-## 第 1 步：删除旧项目
+## 二、逆向出的 EdgeOne CAPI（重要）
 
-EdgeOne 控制台 → **Pages** → 找到 `nxz-words` → **设置** → 页面底部 → **删除项目**
+`edgeone` CLI 只能建**从模板创建**的项目，但底层 CAPI 支持直接指定 Git 仓库。
 
-> 若提示需要输入项目名确认，输入 `nxz-words`。
+**端点与认证**：
 
-⚠️ 删除后 `https://nxz-words.edgeone.cool` 会立即失效，直到新项目部署完成。
+```
+海外(global) : https://pages-api.edgeone.ai/v1
+中国(china)  : https://pages-api.cloud.tencent.com/v1
+认证         : Authorization: Bearer <EDGEONE_API_TOKEN>
+请求         : POST，body = { Action: "XxxYyy", ...参数 }
+响应         : { Code: 0, Data: { Response: {...} } }
+```
 
----
+**判断 token 区域**：向错误区域请求会返回 `{ Code: 109, Message: "The Token usage region is incorrect." }`。
+→ 你的 token 属于 **global**，必须用 `pages-api.edgeone.ai`。
 
-## 第 2 步：新建 Git 集成项目
+**实测可用的 Action**：
 
-控制台 → **Pages** → **创建项目** → 选 **「导入 Git 仓库」**（**不要**选「直接上传」）
-
-1. 授权 GitHub（若未授权过，会跳转授权页；选 `talunte50` 账号，授权范围可只勾这一个仓库）
-2. 选择仓库：**`talunte50/nxz-words`**
-3. 分支：**`main`**
-4. 项目名称：**`nxz-words`**（保持同名，域名可延续）
-5. 加速区域：**全球可用区（不含中国大陆）** ← 免备案，与你之前的选择一致
-
----
-
-## 第 3 步：构建配置（关键，对照 `edgeone.json`）
-
-| 配置项 | 填写值 |
+| Action | 用途 |
 | --- | --- |
-| 框架预设 | `Next.js` |
-| 构建命令 | `npm run build` |
-| 安装命令 | `npm install` |
-| 输出目录 | `.next` |
-| Node 版本 | `20.18.0` |
+| `DescribeUserInfo` | 查账号（返回 UserName / ZoneId / Uin） |
+| `DescribePagesProjects` | 列项目，可传 `ProjectId` 过滤 |
+| `CreatePagesProject` | 建项目，**支持 `Provider:"Github"`** |
+| `DescribePagesProjectEnvs` | 读环境变量 |
+| `ModifyPagesProjectEnvs` | 写环境变量 |
+| `DeletePagesProjectEnvs` | 删环境变量 |
+| `DescribePagesDeployments` | 列部署记录 |
+| `CreatePagesDeployment` | 触发部署 |
+| `DescribeProjectKVBindings` | 读 KV 绑定（返回值加密） |
 
-> 这些值应与仓库里的 `edgeone.json` 完全一致。若平台支持读取 `edgeone.json` 自动填充，优先让它自动读。
-> **函数最大执行时长**设为 `60`（对应 `nodeFunctionsConfig.maxDuration`，AI 流式回复需要）。
+**CAPI 不支持**（返回 `Code:107 Action has not found.`）：
 
----
+- 任何 Git 授权相关 Action（`DescribeGitRepos` / `DescribePagesRepoAuth` 等）
+- KV 命名空间列表 / 创建
+- `DescribePagesDeployment`（单数形式）
 
-## 第 4 步：配置环境变量
+**创建 Git 项目的完整参数**（照抄自账号下已有的 `it-tools` 项目）：
 
-项目创建后 → **设置** → **环境变量** → 逐条添加（环境选 **Production**）：
-
-| Key | Value |
-| --- | --- |
-| `STORAGE_DRIVER` | `edgeone-kv` |
-| `SESSION_SECRET` | `44026e99da9d4b051a9a8b5190dedd98f87c68929f8c643f` |
-| `COOKIE_SECURE` | `true` |
-| `AI_BASE_URL` | `https://apihub.agnes-ai.cn/v1` |
-| `AI_MODEL` | `agnes-3.0-flash` |
-| `AI_API_KEY` | `wk-VZM68PF6pqQ4i8IKt9kiCLxWcoqbPsxVg0HqEPsWjxphT0pw` |
-
-> `STORAGE_DRIVER` 必须为 `edgeone-kv`；`SESSION_SECRET` 换新值也可以，但会导致所有用户登录态失效，建议沿用。
-
----
-
-## 第 5 步：绑定 KV（等审批通过后做）
-
-项目 → **设置** → **KV 存储 / 数据连接** → 绑定命名空间 → **变量名必须填 `VOCAB_KV`**
-
-> 变量名不是 `VOCAB_KV` 会导致所有写操作 500。
-
----
-
-## 第 6 步：移除 Actions 工作流（重要）
-
-Git 集成项目由平台构建，**不能再用 CLI 部署**（会冲突，且 CLI 明确只支持直接上传类型）。
-
-删除 `.github/workflows/deploy-edgeone.yml`：
-
-```bash
-git rm .github/workflows/deploy-edgeone.yml
-git commit -m "ci: 移除 CLI 部署工作流（项目已改为 Git 集成，由平台构建）"
-git push origin main
+```json
+{
+  "Action": "CreatePagesProject",
+  "Name": "nxz-words",
+  "Provider": "Github",
+  "Channel": "Custom",
+  "Area": "overseas",
+  "RepoUrl": "https://github.com/talunte50/nxz-words",
+  "RepoOwner": "talunte50",
+  "RepoName": "nxz-words",
+  "RepoBranch": "main",
+  "Framework": "Next.js",
+  "BuildCmd": "npm run build",
+  "InstallCmd": "npm install",
+  "OutputDir": ".next",
+  "RootDir": "./"
+}
 ```
 
-同时可以清理不再需要的脚本与 secret：
-
-```bash
-git rm scripts/gh-set-secret.mjs scripts/gh-run-logs.mjs
-```
-
-> 仓库 secret `EDGEONE_API_TOKEN` 可在 Settings → Secrets → Actions 里删除。
+> 注意：`CreatePagesProject` **不校验 Provider 值的合法性**，传 `"Git"` 也能建出来。
+> 所以「建成了」不等于「真绑定」，必须看 `RepoUrl` 是否落库 + 能否成功触发 Git 构建。
 
 ---
 
-## 第 7 步：验证
+## 三、⚠️ 剩余关键一步：控制台授权 GitHub
 
-```bash
-# 1. 平台侧构建是否触发
-#    控制台 → Pages → nxz-words → 部署记录，应能看到由 push 触发的构建
+**问题**：通过 API 创建的项目虽然 `Provider=Github`、`RepoUrl` 也写入了，但**没有建立 GitHub App 授权关系**。表现为触发部署时报错：
 
-# 2. 线上连通性
-curl -s -o /dev/null -w "%{http_code}\n" https://nxz-words.edgeone.cool/login
-
-# 3. 关闭「访问保护」后再验证（否则会返回 401 + x-eop-msg: eo_time missing）
+```
+DeploymentId: dp2hwcqqqcxu
+Status: Failed
+Code: 11
+ViaMeta: Github
+RepoBranch: null        ← 关键：分支为空，说明平台没有仓库访问凭证
 ```
 
-验收清单：
+**原因**：GitHub 授权必须走 OAuth 交互流程（浏览器跳转 + 用户点授权），CAPI 没有对应 Action，无法用 API 完成。
 
-- [ ] 首页能加载词库列表（非空）
-- [ ] 注册 → 登录 → 退出 正常（**验证 KV 已生效**）
-- [ ] 学词页学 3 个词 → 刷新 → 记录仍在
-- [ ] AI 精讲 / AI 对话能收到回复
-- [ ] 推送一次代码 → 平台自动重新构建并上线
+### 你需要做的（2 分钟）
+
+1. 打开 EdgeOne 控制台 → **Pages** → 项目 `nxz-words`
+2. 进入 **设置** → 找到 **Git 配置 / 代码仓库** 相关项
+3. 点击 **重新授权 / 绑定 GitHub**，完成 GitHub App 授权（选 `talunte50` 账号，授权 `nxz-words` 仓库）
+4. 确认分支为 `main`
+5. 手动点一次 **重新部署**
+
+授权完成后，后续推送代码到 `main` 就会自动触发平台构建（真正的 Git 集成）。
+
+> 如果控制台提示项目配置不完整或无法授权，最稳妥的做法是：删掉当前项目，
+> 用控制台「导入 Git 仓库」重新创建一次（配置参数照抄本文档第二节，环境变量值见第一节）。
 
 ---
 
-## 附：两种方案对比（供决策参考）
+## 四、辅助脚本
 
-| | 上传式（Actions 调 CLI） | Git 集成（真绑定） |
-| --- | --- | --- |
-| 后台显示 | 上传产物 | 已关联 GitHub |
-| 触发 | Actions 构建后 CLI 上传 | 平台拉代码自行构建 |
-| 构建环境 | GitHub 机器 | EdgeOne 平台 |
-| 环境变量 | 项目上持久保存 | 项目上持久保存 |
-| 重建成本 | 无（现状） | 需删项目重建 + 重配变量 |
-| 大陆可用性 | 不受影响 | 不受影响 |
+`scripts/edgeone-api.mjs` —— 直连 CAPI 的命令行工具：
 
-**功能等价性**：两者都能实现「push 代码 → 自动上线」，差别主要在后台展示形式与构建执行方。
+```bash
+# 查账号
+node scripts/edgeone-api.mjs <TOKEN> DescribeUserInfo
+
+# 列所有项目
+node scripts/edgeone-api.mjs <TOKEN> DescribePagesProjects '{"PageSize":50,"PageNumber":1}'
+
+# 查单个项目
+node scripts/edgeone-api.mjs <TOKEN> DescribePagesProjects '{"ProjectId":"makers-gkzwuzgwbhpr"}'
+
+# 读环境变量
+node scripts/edgeone-api.mjs <TOKEN> DescribePagesProjectEnvs '{"ProjectId":"makers-gkzwuzgwbhpr"}'
+
+# 写环境变量
+node scripts/edgeone-api.mjs <TOKEN> ModifyPagesProjectEnvs \
+  '{"ProjectId":"makers-gkzwuzgwbhpr","EnvVars":[{"Key":"FOO","Value":"bar","Env":["Production"]}]}'
+
+# 列部署记录
+node scripts/edgeone-api.mjs <TOKEN> DescribePagesDeployments '{"ProjectId":"makers-gkzwuzgwbhpr"}'
+```
+
+---
+
+## 五、遗留事项
+
+1. **GitHub 授权**（见第三节，需控制台操作）
+2. **KV 绑定**：KV 申请通过后，在项目设置里绑为变量名 **`VOCAB_KV`**。
+   不绑定则注册/学词等所有写操作返回 500。
+3. **访问保护**：若访问返回 `401 + x-eop-msg: eo_time missing`，在控制台关闭访问保护。
+4. 旧项目 `makers-oumogbchjfcf` 已删除，本站点原域名 `nxz-words.edgeone.cool` 已失效；
+   新预设域名为 **`nxz-words.edgeone.dev`**（EdgeOne Pages 新域名后缀）。
