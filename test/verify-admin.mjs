@@ -72,9 +72,11 @@ const seo = read("lib/seo.ts");
 t("SEO 品牌 = 逆行者单词", /SITE_NAME = "逆行者单词"/.test(seo));
 t("layout 无旧品牌", !/WordLeap|词跃|逆行者记单词/.test(read("app/layout.tsx")));
 
-// ---- 12. 数据文件齐全 ----
-const files = fs.readdirSync("data/wordbooks").filter((f) => f.endsWith(".json"));
-t("词库文件数 >= 369", files.length >= 369, `实际 ${files.length}`);
+// ---- 12. 数据文件齐全（词书在 public/，manifest 在 data/）----
+const pubFiles = fs.readdirSync("public/wordbooks").filter((f) => f.endsWith(".json"));
+t("public/wordbooks 词书数 >= 368", pubFiles.length - 1 >= 368, `实际 ${pubFiles.length - 1}`);
+const dataFiles = fs.readdirSync("data/wordbooks");
+t("data/wordbooks 仅剩 manifest.json", dataFiles.length === 1 && dataFiles[0] === "manifest.json", dataFiles.join(","));
 
 // ---- 13. 管理端 UI 六模块齐全 ----
 const admin = read("app/admin/page.tsx");
