@@ -138,6 +138,54 @@ EdgeOne 控制台 → Pages → 项目 → 触发部署（或推代码自动触�
 
 构建成功标志：日志末尾出现 `✓ Generating static pages` 且无报错。
 
+### 5.1 自动部署（GitHub Actions，推荐）
+
+本仓库已内置 `.github/workflows/deploy-edgeone.yml`，**推送到 `main` 即自动构建并部署**，无需进控制台点按钮。当前状态：**已配置并实测跑通**。
+
+链路：
+
+```
+git push origin main
+        ↓
+GitHub Actions（ubuntu-latest）: npm ci → npm run build
+        ↓
+组装 .deploy/（.next + package.json + edgeone.json）
+        ↓
+npx edgeone makers deploy ./.deploy -n nxz-words -a overseas
+        ↓
+线上更新 → https://nxz-words.edgeone.cool
+```
+
+首次配置只需两步（已完成，此处备查）：
+
+**① 写入仓库 Secret**
+
+仓库 → Settings → Secrets and variables → Actions → New repository secret：
+
+| Name | Value |
+| --- | --- |
+| `EDGEONE_API_TOKEN` | EdgeOne 控制台 → Pages → 设置 → API Token |
+
+命令行方式（受限环境可用，依赖 `libsodium-wrappers`）：
+
+```bash
+NODE_PATH=<workspace>/node_modules node scripts/gh-set-secret.mjs \
+  talunte50/nxz-words <GH_TOKEN> EDGEONE_API_TOKEN <EDGEONE_TOKEN>
+```
+
+**② 确认项目类型为「直接上传」**
+
+`edgeone makers deploy` 只能部署**直接上传（direct upload）**类型项目，与 Git 集成类型互斥。本项目为直接上传类型，因此走 Actions 而非平台 Git 集成——这就是「绑定 GitHub」的正确姿势。
+
+> 关键参数：`-a overseas` 对应**全球可用区（不含中国大陆）**；`-e production` 部署到生产环境。
+> 注意：`push` 触发的运行会因 `concurrency` 配置自动取消旧运行，属正常现象。
+
+查看运行结果：
+
+```bash
+node scripts/gh-run-logs.mjs <GH_TOKEN> talunte50/nxz-words <RUN_ID>
+```
+
 ---
 
 ## 六、部署后验证清单
@@ -193,6 +241,15 @@ Cookie 的 `secure` 默认**自动判定**（见 `lib/auth/session.ts` 的 `isSe
 ### 构建报 `Cannot find module 'next'`
 
 `package-lock.json` 没入库，或 `edgeone.json` 的 `installCommand` 没生效。执行 `git ls-files package-lock.json` 应能列出该文件。
+
+### 已部署成功但线上返回 401
+
+```
+x-eop-msg: eo_time missing
+server: edgeone makers
+```
+
+这是 EdgeOne 的**访问保护（预览保护）**，不是部署失败。控制台 → Pages → 项目 → 设置里关闭访问保护，或改用带签名的访问链接即可。
 
 ### 预览链接 3 小时后打不开
 
