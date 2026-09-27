@@ -138,53 +138,43 @@ EdgeOne 控制台 → Pages → 项目 → 触发部署（或推代码自动触�
 
 构建成功标志：日志末尾出现 `✓ Generating static pages` 且无报错。
 
-### 5.1 自动部署（GitHub Actions，推荐）
+### 5.1 自动部署（Git 集成）
 
-本仓库已内置 `.github/workflows/deploy-edgeone.yml`，**推送到 `main` 即自动构建并部署**，无需进控制台点按钮。当前状态：**已配置并实测跑通**。
-
-链路：
+本项目为 **Git 集成类型**：仓库已关联 EdgeOne，**推送到 `main` 即由平台自动构建并部署**。
 
 ```
 git push origin main
         ↓
-GitHub Actions（ubuntu-latest）: npm ci → npm run build
+EdgeOne 平台拉取仓库 → npm install → npm run build
         ↓
-组装 .deploy/（.next + package.json + edgeone.json）
-        ↓
-npx edgeone makers deploy ./.deploy -n nxz-words -a overseas
-        ↓
-线上更新 → https://nxz-words.edgeone.cool
+部署到边缘节点，线上更新
 ```
 
-首次配置只需两步（已完成，此处备查）：
+**选型说明（重要）**：EdgeOne 项目类型**创建后不可更改**，两类互斥：
 
-**① 写入仓库 Secret**
+| 类型 | 部署入口 | 能否用 CLI 部署 |
+| --- | --- | --- |
+| 直接上传 | CLI / 控制台上传产物 | 可以 |
+| **Git 集成** | 平台拉取仓库自动构建 | **不可以** |
 
-仓库 → Settings → Secrets and variables → Actions → New repository secret：
+因此本仓库**不含** CLI 部署工作流。早期曾用 GitHub Actions + `edgeone makers deploy` 上传产物实现自动部署（功能等价），但那类项目在后台显示为「上传产物」；为获得真正的 Git 绑定，已重建为 Git 集成类型。
 
-| Name | Value |
+> ⚠️ 若将来误加了 CLI 部署工作流，会与平台构建冲突，务必删除。
+
+**构建配置**（与 `edgeone.json` 一致，创建项目时填写）：
+
+| 配置项 | 值 |
 | --- | --- |
-| `EDGEONE_API_TOKEN` | EdgeOne 控制台 → Pages → 设置 → API Token |
+| 框架预设 | `Next.js` |
+| 构建命令 | `npm run build` |
+| 安装命令 | `npm install` |
+| 输出目录 | `.next` |
+| Node 版本 | `20.18.0` |
+| 函数最大时长 | `60` |
 
-命令行方式（受限环境可用，依赖 `libsodium-wrappers`）：
+**查看构建结果**：控制台 → Pages → 项目 → **部署记录**。每次 push 都会产生一条记录，点进去可看完整构建日志。
 
-```bash
-NODE_PATH=<workspace>/node_modules node scripts/gh-set-secret.mjs \
-  talunte50/nxz-words <GH_TOKEN> EDGEONE_API_TOKEN <EDGEONE_TOKEN>
-```
-
-**② 确认项目类型为「直接上传」**
-
-`edgeone makers deploy` 只能部署**直接上传（direct upload）**类型项目，与 Git 集成类型互斥。本项目为直接上传类型，因此走 Actions 而非平台 Git 集成——这就是「绑定 GitHub」的正确姿势。
-
-> 关键参数：`-a overseas` 对应**全球可用区（不含中国大陆）**；`-e production` 部署到生产环境。
-> 注意：`push` 触发的运行会因 `concurrency` 配置自动取消旧运行，属正常现象。
-
-查看运行结果：
-
-```bash
-node scripts/gh-run-logs.mjs <GH_TOKEN> talunte50/nxz-words <RUN_ID>
-```
+> 从「直接上传」重建为「Git 集成」的完整步骤见 `REBUILD-AS-GIT-PROJECT.md`。
 
 ---
 
