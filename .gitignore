@@ -15,3 +15,8 @@ data/raw/
 .codeartsdoer/
 .workbuddy/
 
+# EdgeOne CLI 本地项目元数据（link 生成，含项目 ID，不入库）
+.edgeone/
+# CI 部署临时目录
+.deploy/
+
