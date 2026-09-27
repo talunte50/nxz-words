@@ -1,13 +1,11 @@
 # EdgeOne 真·Git 绑定完成报告
 
 > 执行时间：2026-09-27
-> 结果：**Git 集成项目已通过 API 创建成功**，剩余 1 步需控制台授权
+> **结果：已完全打通 ✅** —— `git push` 即可自动触发平台构建并上线
 
 ---
 
-## 一、最终状态
-
-### 新项目
+## 一、最终状态（已验证）
 
 | 项 | 值 |
 | --- | --- |
@@ -17,14 +15,23 @@
 | RepoUrl | `https://github.com/talunte50/nxz-words` |
 | RepoBranch | `main` |
 | Framework | `Next.js` |
-| BuildCmd | `npm run build` |
-| InstallCmd | `npm install` |
-| OutputDir | `.next` |
+| BuildCmd / InstallCmd / OutputDir | `npm run build` / `npm install` / `.next` |
 | Area | `overseas`（全球可用区，不含中国大陆） |
-| 预设域名 | `nxz-words.edgeone.dev` |
-| 环境变量 | 6 条（全部已在 Production） |
+| 预设域名 | **`nxz-words.edgeone.dev`** |
+| 项目 Status | `Normal` |
+| 环境变量 | 6 条（Production） |
 
-### 环境变量（已通过 API 写入并回读验证）
+### 部署验证记录
+
+| DeploymentId | Status | 耗时 | Commit | 触发方式 |
+| --- | --- | --- | --- | --- |
+| `dpjc3prlte8z` | **Success** | 88s | `d9278236` | **push 自动触发** ✅ |
+| `dpg7eg6cxvix` | **Success** | 152s | `5a7c4b51` | 手工 API 触发 |
+| `dp2hwcqqqcxu` | Invalid | — | — | 首次创建时瞬时失败（见第三节） |
+
+**结论**：GitHub 授权正常，自动构建正常。**每次 `git push origin main` 都会自动部署。**
+
+### 环境变量（已回读验证）
 
 ```
 STORAGE_DRIVER = edgeone-kv
@@ -37,44 +44,23 @@ AI_API_KEY     = wk-VZM68PF6pqQ4i8IKt9kiCLxWcoqbPsxVg0HqEPsWjxphT0pw
 
 ---
 
-## 二、逆向出的 EdgeOne CAPI（重要）
+## 二、怎么做到的：直连 EdgeOne CAPI
 
-`edgeone` CLI 只能建**从模板创建**的项目，但底层 CAPI 支持直接指定 Git 仓库。
+`edgeone` CLI **无法**创建 Git 集成项目（只有 `makers create --template`），但底层 CAPI 可以。
 
-**端点与认证**：
+**端点**（逆向 `edgeone-dist/cli.js` 得出）：
 
 ```
-海外(global) : https://pages-api.edgeone.ai/v1
+海外(global) : https://pages-api.edgeone.ai/v1        ← 本项目用这个
 中国(china)  : https://pages-api.cloud.tencent.com/v1
 认证         : Authorization: Bearer <EDGEONE_API_TOKEN>
-请求         : POST，body = { Action: "XxxYyy", ...参数 }
+请求         : POST  body = { Action: "XxxYyy", ...参数 }
 响应         : { Code: 0, Data: { Response: {...} } }
 ```
 
-**判断 token 区域**：向错误区域请求会返回 `{ Code: 109, Message: "The Token usage region is incorrect." }`。
-→ 你的 token 属于 **global**，必须用 `pages-api.edgeone.ai`。
+**判断 token 区域**：请求错区域返回 `{ Code: 109, Message: "The Token usage region is incorrect." }`。
 
-**实测可用的 Action**：
-
-| Action | 用途 |
-| --- | --- |
-| `DescribeUserInfo` | 查账号（返回 UserName / ZoneId / Uin） |
-| `DescribePagesProjects` | 列项目，可传 `ProjectId` 过滤 |
-| `CreatePagesProject` | 建项目，**支持 `Provider:"Github"`** |
-| `DescribePagesProjectEnvs` | 读环境变量 |
-| `ModifyPagesProjectEnvs` | 写环境变量 |
-| `DeletePagesProjectEnvs` | 删环境变量 |
-| `DescribePagesDeployments` | 列部署记录 |
-| `CreatePagesDeployment` | 触发部署 |
-| `DescribeProjectKVBindings` | 读 KV 绑定（返回值加密） |
-
-**CAPI 不支持**（返回 `Code:107 Action has not found.`）：
-
-- 任何 Git 授权相关 Action（`DescribeGitRepos` / `DescribePagesRepoAuth` 等）
-- KV 命名空间列表 / 创建
-- `DescribePagesDeployment`（单数形式）
-
-**创建 Git 项目的完整参数**（照抄自账号下已有的 `it-tools` 项目）：
+**创建 Git 项目的参数**（照抄账号下已有 `it-tools` 项目的字段结构）：
 
 ```json
 {
@@ -95,72 +81,79 @@ AI_API_KEY     = wk-VZM68PF6pqQ4i8IKt9kiCLxWcoqbPsxVg0HqEPsWjxphT0pw
 }
 ```
 
-> 注意：`CreatePagesProject` **不校验 Provider 值的合法性**，传 `"Git"` 也能建出来。
-> 所以「建成了」不等于「真绑定」，必须看 `RepoUrl` 是否落库 + 能否成功触发 Git 构建。
+**环境变量**：
+
+```json
+{
+  "Action": "ModifyPagesProjectEnvs",
+  "ProjectId": "makers-gkzwuzgwbhpr",
+  "EnvVars": [{ "Key": "FOO", "Value": "bar", "Env": ["Production"] }]
+}
+```
+
+完整 Action 清单与字段说明见 `.workbuddy/skills/edgeone-gh-deploy/references/edgeone-capi.md`。
 
 ---
 
-## 三、⚠️ 剩余关键一步：控制台授权 GitHub
+## 三、关于首次的「克隆报错」
 
-**问题**：通过 API 创建的项目虽然 `Provider=Github`、`RepoUrl` 也写入了，但**没有建立 GitHub App 授权关系**。表现为触发部署时报错：
+首次创建后出现过：
 
 ```
 DeploymentId: dp2hwcqqqcxu
 Status: Failed
 Code: 11
 ViaMeta: Github
-RepoBranch: null        ← 关键：分支为空，说明平台没有仓库访问凭证
+RepoBranch: null      ← 平台未取到凭证
 ```
 
-**原因**：GitHub 授权必须走 OAuth 交互流程（浏览器跳转 + 用户点授权），CAPI 没有对应 Action，无法用 API 完成。
+这是**项目刚创建、授权尚未生效时的瞬时状态**。后续（`dpg7eg6cxvix` 起）`RepoBranch: main` 正常落库、`RepoCommitMsg` 也能正确读出，说明授权其实已经建立。
 
-### 你需要做的（2 分钟）
+**判断 Git 集成是否真的可用**，看这两点即可：
 
-1. 打开 EdgeOne 控制台 → **Pages** → 项目 `nxz-words`
-2. 进入 **设置** → 找到 **Git 配置 / 代码仓库** 相关项
-3. 点击 **重新授权 / 绑定 GitHub**，完成 GitHub App 授权（选 `talunte50` 账号，授权 `nxz-words` 仓库）
-4. 确认分支为 `main`
-5. 手动点一次 **重新部署**
+1. `DescribePagesProjects` 返回的 `RepoUrl` / `RepoOwner` / `RepoName` 有值
+2. `DescribePagesDeployments` 最新记录的 `RepoBranch` 有值且 `Status: Success`
 
-授权完成后，后续推送代码到 `main` 就会自动触发平台构建（真正的 Git 集成）。
-
-> 如果控制台提示项目配置不完整或无法授权，最稳妥的做法是：删掉当前项目，
-> 用控制台「导入 Git 仓库」重新创建一次（配置参数照抄本文档第二节，环境变量值见第一节）。
+> ⚠️ 注意：`CreatePagesProject` **不校验 Provider 合法性**（传 `"Git"` 也能建成），
+> 所以「创建成功」不等于「真绑定」，必须做上面的验证。
 
 ---
 
-## 四、辅助脚本
+## 四、遗留事项（均需控制台操作）
 
-`scripts/edgeone-api.mjs` —— 直连 CAPI 的命令行工具：
+### 1. KV 绑定（必须，否则写操作 500）
+
+KV 审批通过后 → 项目 **设置** → **KV 存储 / 数据连接** → 绑定命名空间 → **变量名填 `VOCAB_KV`**。
+
+> CAPI 没有 KV 命名空间相关 Action（`DescribeKVs` 等均返回 107），只能控制台操作。
+
+### 2. 关闭访问保护
+
+当前访问 `https://nxz-words.edgeone.dev` 返回：
+
+```
+401
+x-eop-msg: eo_time missing
+server: edgeone makers
+```
+
+这是项目的**访问保护**，不是故障。在项目设置里关闭即可。
+
+### 3. 自定义域名（可选）
+
+`CustomDomains` 当前为空。如需绑定自有域名，在控制台添加。
+
+---
+
+## 五、辅助脚本
+
+`scripts/edgeone-api.mjs` —— 直连 CAPI（标准 fetch，无第三方依赖）：
 
 ```bash
-# 查账号
 node scripts/edgeone-api.mjs <TOKEN> DescribeUserInfo
-
-# 列所有项目
 node scripts/edgeone-api.mjs <TOKEN> DescribePagesProjects '{"PageSize":50,"PageNumber":1}'
-
-# 查单个项目
 node scripts/edgeone-api.mjs <TOKEN> DescribePagesProjects '{"ProjectId":"makers-gkzwuzgwbhpr"}'
-
-# 读环境变量
 node scripts/edgeone-api.mjs <TOKEN> DescribePagesProjectEnvs '{"ProjectId":"makers-gkzwuzgwbhpr"}'
-
-# 写环境变量
-node scripts/edgeone-api.mjs <TOKEN> ModifyPagesProjectEnvs \
-  '{"ProjectId":"makers-gkzwuzgwbhpr","EnvVars":[{"Key":"FOO","Value":"bar","Env":["Production"]}]}'
-
-# 列部署记录
 node scripts/edgeone-api.mjs <TOKEN> DescribePagesDeployments '{"ProjectId":"makers-gkzwuzgwbhpr"}'
+node scripts/edgeone-api.mjs <TOKEN> ModifyPagesProjectEnvs '{"ProjectId":"...","EnvVars":[{"Key":"K","Value":"V","Env":["Production"]}]}'
 ```
-
----
-
-## 五、遗留事项
-
-1. **GitHub 授权**（见第三节，需控制台操作）
-2. **KV 绑定**：KV 申请通过后，在项目设置里绑为变量名 **`VOCAB_KV`**。
-   不绑定则注册/学词等所有写操作返回 500。
-3. **访问保护**：若访问返回 `401 + x-eop-msg: eo_time missing`，在控制台关闭访问保护。
-4. 旧项目 `makers-oumogbchjfcf` 已删除，本站点原域名 `nxz-words.edgeone.cool` 已失效；
-   新预设域名为 **`nxz-words.edgeone.dev`**（EdgeOne Pages 新域名后缀）。
