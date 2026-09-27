@@ -69,7 +69,7 @@ git log --oneline -3          # 确认提交在
 ### 1.3 在 GitHub 创建空仓库（网页）
 
 1. 登录 https://github.com → 右上角 **+** → **New repository**
-2. 填 Repository name（如 `wordleap`），选 **Public** 或 **Private**
+2. 填 Repository name（如 `nxz-words`），选 **Public** 或 **Private**
 3. **三个复选框全部留空**：不勾 README、不勾 .gitignore、不勾 license（勾了会导致 push 被拒、需先 pull 合并）
 4. **Create repository**，记下仓库地址
 
@@ -77,7 +77,7 @@ git log --oneline -3          # 确认提交在
 
 ```bash
 cd /e/madao/demo
-git remote add origin https://github.com/<用户名>/wordleap.git
+git remote add origin https://github.com/talunte50/nxz-words.git
 git branch -M main
 git push -u origin main
 ```
@@ -85,13 +85,13 @@ git push -u origin main
 **若 `origin` 已存在但地址不对**：
 
 ```bash
-git remote set-url origin https://github.com/<用户名>/wordleap.git
+git remote set-url origin https://github.com/talunte50/nxz-words.git
 ```
 
 **弹出账号密码框**：用户名填 GitHub 用户名，密码填 **PAT**（不是登录密码）。
 报 `Invalid username or password` → PAT 没复制全或没勾 `repo` 权限。
 
-> 用 SSH 则地址换成 `git@github.com:<用户名>/wordleap.git`，首次会问 `Are you sure you want to continue connecting`，输 `yes`。
+> 用 SSH 则地址换成 `git@github.com:talunte50/nxz-words.git`，首次会问 `Are you sure you want to continue connecting`，输 `yes`。
 
 **推完后校验**（把用户名/仓库名换成你的）：
 
@@ -102,33 +102,72 @@ git remote -v
 
 ### 1.5 网页确认
 
-打开 `https://github.com/<用户名>/wordleap`，确认能看到 `data/wordbooks/` 目录、`edgeone.json`、`package-lock.json`。
+打开 `https://github.com/talunte50/nxz-words`，确认能看到 `data/wordbooks/` 目录、`edgeone.json`、`package-lock.json`。
 
 ---
 
 ## 二、EdgeOne Pages 部署
 
-> 全程在同一浏览器会话完成。
+有两条路：**A. CLI 部署**（可在本机/CI 自动完成）或 **B. 控制台 Git 集成**（推代码后平台自动构建）。二选一。
 
-### 2.1 创建 Pages 项目
+### 路线 A：CLI 部署（推荐，可自动化）
+
+前置：在 Makers 控制台 → **API Token** Tab 创建一个 Token（选有效期）。注意这是 **EdgeOne API Token**，不是腾讯云 SecretId/SecretKey。
+
+```bash
+# 1) 本地构建（EdgeOne CLI 会强制重建，本机构建有坑，所以先手动构建好）
+cd /e/madao/demo
+rm -rf .next && npm run build
+
+# 2) 把产物复制到独立目录，交给 CLI 直接上传（避免 CLI 重新构建）
+rm -rf .dist && mkdir -p .dist
+cp -r .next .dist/.next && cp package.json edgeone.json .dist/
+
+# 3) 部署
+EO="C:/Users/Administrator/AppData/Roaming/npm/node_modules/edgeone/edgeone-bin/edgeone.js"
+node "$EO" makers deploy ./.dist -n nxz-words -t <API_TOKEN> -e production -a overseas
+```
+
+- `-a overseas` = 全球可用区（**不含**中国大陆）→ **免备案**
+- `-a global` = 全球可用区（含中国大陆）→ 需 ICP 备案
+- 成功输出：`Deploy URL: https://<项目名>.edgeone.cool`
+
+**环境变量可通过 CLI 设置**（改完需重新 deploy）：
+
+```bash
+node "$EO" makers env ls -t <API_TOKEN>
+node "$EO" makers env set STORAGE_DRIVER edgeone-kv -t <API_TOKEN> -e production
+node "$EO" makers env set SESSION_SECRET "$(openssl rand -hex 24)" -t <API_TOKEN> -e production
+node "$EO" makers env set COOKIE_SECURE true -t <API_TOKEN> -e production
+node "$EO" makers env set AI_BASE_URL https://api.deepseek.com/v1 -t <API_TOKEN> -e production
+node "$EO" makers env set AI_MODEL deepseek-chat -t <API_TOKEN> -e production
+node "$EO" makers env set AI_API_KEY sk-xxx -t <API_TOKEN> -e production
+```
+
+> ⚠️ **CLI 不支持 KV 绑定**（无对应命令），KV 必须走控制台，见 2.3。
+
+> ⚠️ **CLI 部署会修改项目文件**（注入 image-loader、改 `tsconfig.json` / `package-lock.json`、生成 `.edgeone/` 与 `next.config.original.ts`）。部署后请还原：`git checkout -- next.config.ts tsconfig.json package-lock.json && rm -rf .edgeone next.config.original.ts .dist`
+
+### 路线 B：控制台 Git 集成
+
+推代码到 GitHub 后，由平台自动构建。适合不想在本机跑构建的场景。
 
 1. 登录 [EdgeOne 控制台](https://console.cloud.tencent.com/edgeone) → 顶部 **Makers** / 左侧 **Pages**
 2. **创建项目** → 代码源选 **关联代码仓库** → 平台选 **GitHub** → 按提示授权
-3. 选仓库 `wordleap`，分支 **`main`**
+3. 选仓库、分支 **`main`**
 4. 构建配置**全部留空**（平台自动读根目录 `edgeone.json`：`npm install` / `npm run build` / 输出 `.next` / Node 20.18.0）
 5. **创建**，等首次构建（2~5 分钟）
 
 构建成功标志：日志末尾出现 `✓ Generating static pages` 且无红字。
-完成后会给出 `https://xxxx.edgeone.app` 预览链接（大陆打不开、3 小时过期，属正常）。
 
-### 2.2 配置环境变量（必须）
+> 注意：Git 集成类型的项目**不能再用 CLI 部署**，两者互斥。
 
-项目 → **设置** → **环境变量**，逐条添加：
+### 2.2 配置环境变量（两条路线通用）
 
 | 变量名 | 值 | 说明 |
 |---|---|---|
 | `STORAGE_DRIVER` | `edgeone-kv` | **必填**。漏掉则所有写操作 500（边缘节点无磁盘） |
-| `SESSION_SECRET` | 见下方生成命令 | **必填**。不填会回落到内置 dev 密钥，存在伪造会话风险 |
+| `SESSION_SECRET` | `openssl rand -hex 24` | **必填**。不填会回落到内置 dev 密钥，存在伪造会话风险 |
 | `AI_API_KEY` | `sk-...`（DeepSeek） | AI 功能密钥；不用 AI 可留空（会返回演示内容） |
 | `AI_BASE_URL` | `https://api.deepseek.com/v1` | 大模型地址 |
 | `AI_MODEL` | `deepseek-chat` | 模型名 |
@@ -136,31 +175,21 @@ git remote -v
 | `ADMIN_USERNAME` | 如 `admin` | 可选，须与下面同时设置 |
 | `ADMIN_PASSWORD` | 如 `Adm!2026#Sec` | 可选，≥ 6 位 |
 
-**生成 SESSION_SECRET（本地执行，复制结果）：**
-
-```bash
-# Git Bash / macOS / Linux
-openssl rand -hex 24
-
-# PowerShell
--join (1..48 | ForEach-Object { "{0:x}" -f (Get-Random -Maximum 16) })
-```
-
 > `ADMIN_USERNAME` / `ADMIN_PASSWORD` 两个都填才生效（缺一跳过）。该账号在**首次有人调用登录接口时**幂等创建，创建后即 admin；不配置则第一个注册的用户自动成为管理员。
-> 添加后点 **保存**。
 
-### 2.3 创建并绑定 KV 存储（必须）
+### 2.3 创建并绑定 KV 存储（必须，且只能控制台操作）
 
 1. 左侧菜单 → **KV 存储**（部分版本叫「边缘存储」/「数据连接」，搜 "KV"）→ **创建命名空间**，名称：`vocab-kv`
 2. 回到 **Pages 项目 → 设置 → 数据连接 / KV 绑定**
 3. 把 `vocab-kv` **绑定为变量名 `VOCAB_KV`**（代码按 `VOCAB_KV → KV → PAGES_KV → EDGEONE_KV` 顺序探测，推荐就用 `VOCAB_KV`）
-4. 保存
+4. 保存后**重新部署**
 
-### 2.4 重新构建（让环境变量 + KV 生效）
+### 2.4 重新部署（让环境变量 + KV 生效）
 
-> 环境变量与 KV 绑定**不热更新**，改完必须重新构建。
+> 环境变量与 KV 绑定**不热更新**，改完必须重新部署。
 
-项目 → **部署记录** → **重新部署** / **手动触发** → 选 `main` → **构建**。
+- CLI：重跑 `node "$EO" makers deploy ./.dist -n nxz-words -t <TOKEN> -a overseas`
+- 控制台：项目 → **部署记录** → **重新部署**
 
 ### 2.5 绑定自定义域名（生产必须）
 
@@ -168,6 +197,8 @@ openssl rand -hex 24
 2. 按提示到 DNS 服务商加 **CNAME**（EdgeOne 会给出目标值）
 3. 等 DNS 生效（几分钟 ~ 1 小时）
 4. 中国大陆可用区：域名需完成 **ICP 备案**（1~2 周）；海外可用区：免备案但大陆延迟较高
+
+> `*.edgeone.cool` 预览域名直接访问会返回 **401**（响应头 `X-EOP-MSG: eo_time missing`），这是预览域名的签权机制，**不是应用故障**，登录控制台或绑自定义域名即可正常访问。
 
 ---
 
@@ -189,16 +220,22 @@ openssl rand -hex 24
 
 | 症状 | 最可能原因 | 处理 |
 |---|---|---|
-| 注册/登录 500 | `STORAGE_DRIVER` 未设 / KV 未绑 `VOCAB_KV` | 回 2.2 / 2.3，重新构建 |
+| 注册/登录 500 | `STORAGE_DRIVER` 未设 / KV 未绑 `VOCAB_KV` | 回 2.2 / 2.3，重新部署 |
 | 词库空列表 / 404 | `data/wordbooks/*.json` 未入库 | `git ls-files data/wordbooks` 确认，补推后重建 |
 | AI 对话中断 | 模型单次回复 > 60s 被 `maxDuration` 截断 | 换快模型 / 调小 `max_tokens` |
-| 登录后仍 401 | `x-forwarded-proto` 缺失导致 secure 判定错误 | 显式设 `COOKIE_SECURE=true`（HTTP 场景设 `false`），重建 |
+| 登录后仍 401 | `x-forwarded-proto` 缺失导致 secure 判定错误 | 显式设 `COOKIE_SECURE=true`（HTTP 场景设 `false`），重新部署 |
 | 构建报 `Cannot find module 'next'` | `package-lock.json` 未入库 | `git ls-files package-lock.json` 确认 |
-| 预览链接失效 | `*.edgeone.app` 3 小时过期，正常 | 绑自定义域名（2.5） |
+| 预览域名返回 401 | `*.edgeone.cool` 的签权机制（正常） | 绑自定义域名（2.5） |
+| CLI 报 `EPERM ... .next\trace` | `.next` 残留 + 本机文件锁 | `rm -rf .next` 后重跑 `npm run build`，再 `deploy ./.dist` |
+| CLI 报 `You are not authenticated` | 误用腾讯云密钥 | 改用 Makers 控制台生成的 **API Token** |
 
 ---
 
-## 四、日常更新 / 回滚
+## 四、日常更新
+
+**CLI 路线**：改代码 → `rm -rf .next && npm run build` → 复制到 `.dist` → `makers deploy` → 还原 CLI 注入的文件（见路线 A 末尾）。
+
+**Git 集成路线**：
 
 ```bash
 cd /e/madao/demo
@@ -207,8 +244,8 @@ git commit -m "更新描述"
 git push            # 推到 main 会自动触发 EdgeOne 构建
 ```
 
-- 只改**环境变量 / KV 绑定**时不会自动重建，需手动「重新部署」
-- 回滚：项目 → **部署记录** → 任一历史版本可一键回滚
+> 只改**环境变量 / KV 绑定**时不会自动重建，需手动重新部署。
+> 回滚：项目 → **部署记录** → 任一历史版本可一键回滚。
 
 ---
 
@@ -219,14 +256,20 @@ git push            # 推到 main 会自动触发 EdgeOne 构建
 cd /e/madao/demo
 git init -b main
 git add -A && git commit -m "feat: 初始化"
-git remote add origin https://github.com/<用户名>/wordleap.git
+git remote add origin https://github.com/talunte50/nxz-words.git
 git push -u origin main
 
-# 日常更新
+# 日常更新（Git 集成路线）
 git add -A && git commit -m "更新描述" && git push
+
+# CLI 部署路线
+rm -rf .next && npm run build
+rm -rf .dist && mkdir -p .dist && cp -r .next .dist/.next && cp package.json edgeone.json .dist/
+EO="C:/Users/Administrator/AppData/Roaming/npm/node_modules/edgeone/edgeone-bin/edgeone.js"
+node "$EO" makers deploy ./.dist -n nxz-words -t <API_TOKEN> -e production -a overseas
 
 # 生成会话密钥
 openssl rand -hex 24
 ```
 
-控制台三件套顺序固定：**环境变量 → KV 绑定 → 重新构建**。改过不重建，一律不生效。
+顺序固定：**环境变量 → KV 绑定 → 重新部署**。改过不重建，一律不生效。
