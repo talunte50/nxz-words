@@ -19,7 +19,10 @@ import { join, resolve, basename } from "node:path";
 const SRC_ROOT = "E:/madao/qwerty-learner-master";
 const DICT_TS = join(SRC_ROOT, "src/resources/dictionary.ts");
 const DICT_DIR = join(SRC_ROOT, "public/dicts");
-const OUT_DIR = resolve(process.cwd(), "data/wordbooks");
+// 词书数据写到 public/wordbooks/，作为静态资源分发（不打进 JS 包）。
+// 只有 manifest.json 会同时落到 data/wordbooks/ 供构建期 import。
+const OUT_DIR = resolve(process.cwd(), "public/wordbooks");
+const MANIFEST_DIR = resolve(process.cwd(), "data/wordbooks");
 
 const argv = process.argv.slice(2);
 const ONLY = (() => {
@@ -240,6 +243,7 @@ async function main() {
   console.log(`解析到 ${index.length} 个词库条目\n`);
 
   await mkdir(OUT_DIR, { recursive: true });
+  await mkdir(MANIFEST_DIR, { recursive: true });
 
   const manifest = [];
   const summary = [];
@@ -324,11 +328,12 @@ async function main() {
     return a.name.localeCompare(b.name, "zh");
   });
 
-  await writeFile(
-    join(OUT_DIR, "manifest.json"),
-    `${JSON.stringify(manifest, null, 2)}\n`,
-    "utf8"
-  );
+  // manifest 同时写两处：
+  //   public/wordbooks/  运行时静态分发（如需前端直接读）
+  //   data/wordbooks/    构建期被 lib/dicts/loader.ts import（首屏词书列表）
+  const manifestJson = `${JSON.stringify(manifest, null, 2)}\n`;
+  await writeFile(join(OUT_DIR, "manifest.json"), manifestJson, "utf8");
+  await writeFile(join(MANIFEST_DIR, "manifest.json"), manifestJson, "utf8");
 
   const total = summary.reduce((a, b) => a + b.count, 0);
   console.log(`\n${"=".repeat(50)}`);

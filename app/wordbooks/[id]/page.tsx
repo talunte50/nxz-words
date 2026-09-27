@@ -2,14 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SITE_NAME, SITE_URL } from "@/lib/seo";
-import { getWordBook, getBookMeta, listWordBooks } from "@/lib/wordbooks-server";
+import { getWordBook, getBookMeta } from "@/lib/wordbooks-server";
 
-export const dynamic = "force-static";
+// 词书详情页**动态渲染**：不在构建期预生成 368 个页面。
+// 原因：全量词库 85MB，预渲染会显著拉长构建时间并可能触碰平台构建上限。
+// 改为按需 ISR：首次访问生成，之后缓存 1 天。
+export const dynamic = "force-dynamic";
 export const revalidate = 86400;
-
-export async function generateStaticParams() {
-  return listWordBooks().map((book) => ({ id: book.id }));
-}
 
 export async function generateMetadata({
   params,

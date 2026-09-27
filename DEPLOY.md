@@ -29,12 +29,13 @@
 | 文件 | 是否必须入库 | 说明 |
 |---|---|---|
 | `edgeone.json` | ✅ 必须 | 构建配置，平台自动读取 |
-| `data/wordbooks/*.json`（14 个） | ✅ 必须 | 词库数据通过动态 import 打进 JS chunk，**不入库则线上词库为空** |
+| `public/wordbooks/*.json`（368 本，约 81MB） | ✅ 必须 | 词书作为**静态资源**分发（走 CDN，**不进 JS 包**）；不入库则线上词库为空 |
+| `data/wordbooks/manifest.json` | ✅ 必须 | 词书清单，构建期被 `lib/dicts/loader.ts` import（首屏词书列表用） |
 | `package.json` / `lockfile` | ✅ 必须 | 构建依赖 |
 | `.env.example` | ✅ 建议 | 供运维参考，不含真实密钥 |
 | `.env` / `.data/` | ❌ 禁止 | 已在 `.gitignore`，含本地密钥与本地数据 |
 
-> ⚠️ **最常见线上故障**：忘记提交 `data/wordbooks/*.json`，导致首页和学词页词库加载失败（404 或空列表）。部署前务必 `git status` 确认这些文件未被忽略。
+> ⚠️ **最常见线上故障**：忘记提交 `public/wordbooks/*.json` 或 `data/wordbooks/manifest.json`，导致首页和学词页词库加载失败（404 或空列表）。部署前务必 `git status` 确认这些文件未被忽略。
 
 ### 2. 腾讯云账号
 
@@ -216,7 +217,10 @@ EdgeOne 平台拉取仓库 → npm install → npm run build
 
 ### 词库列表为空 / 404
 
-`data/wordbooks/*.json` 没有提交进仓库。补齐后重新构建。
+`public/wordbooks/*.json`（词书数据）或 `data/wordbooks/manifest.json`（清单）没有提交进仓库。补齐后重新构建。
+
+> 另注：词书详情页（`/wordbooks/<id>`）为**动态渲染**，首次访问需读取 `public/wordbooks/` 下的 JSON。
+> 若平台未原样发布 `public/`，需确认构建配置的 `outputDirectory` 与静态资源目录正确。
 
 ### AI 对话中途断流（SSE 截断）
 
