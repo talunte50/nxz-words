@@ -1,0 +1,106 @@
+[
+  {
+    "id": "primary",
+    "name": "小学英语",
+    "description": "人教版小学 3-6 年级核心词汇（多分册合并去重）",
+    "level": "小学",
+    "cover": "🎒",
+    "wordCount": 1221
+  },
+  {
+    "id": "junior",
+    "name": "初中英语",
+    "description": "中考核心词汇，覆盖初中三年教材",
+    "level": "初中",
+    "cover": "📐",
+    "wordCount": 2500
+  },
+  {
+    "id": "senior",
+    "name": "高中英语",
+    "description": "高考 3500 词与高中教材词汇",
+    "level": "高中",
+    "cover": "🧪",
+    "wordCount": 4500
+  },
+  {
+    "id": "college",
+    "name": "大学英语",
+    "description": "牛津核心 5000 + 麦克米伦 7000 通用英语词表（非应试，与四六级不重复）",
+    "level": "大学",
+    "cover": "🎓",
+    "wordCount": 6000
+  },
+  {
+    "id": "cet4",
+    "name": "大学英语四级",
+    "description": "CET-4 核心词汇",
+    "level": "CET4",
+    "cover": "📘",
+    "wordCount": 2607
+  },
+  {
+    "id": "cet6",
+    "name": "大学英语六级",
+    "description": "CET-6 进阶词汇",
+    "level": "CET6",
+    "cover": "📗",
+    "wordCount": 2345
+  },
+  {
+    "id": "business",
+    "name": "商务英语",
+    "description": "BEC 商务英语词汇（中级 + 高级合并）",
+    "level": "商务",
+    "cover": "💼",
+    "wordCount": 2822
+  },
+  {
+    "id": "ielts",
+    "name": "雅思",
+    "description": "雅思核心词汇（词表 + 高频 807 词，去重）",
+    "level": "雅思",
+    "cover": "🇬🇧",
+    "wordCount": 4000
+  },
+  {
+    "id": "toefl",
+    "name": "托福",
+    "description": "托福核心词汇（官方词表 + 张洪岩精选）",
+    "level": "托福",
+    "cover": "✈️",
+    "wordCount": 4000
+  },
+  {
+    "id": "kaoyan",
+    "name": "考研",
+    "description": "考研英语核心词汇（历年大纲词表）",
+    "level": "考研",
+    "cover": "🏫",
+    "wordCount": 4500
+  },
+  {
+    "id": "gre",
+    "name": "GRE",
+    "description": "GRE 高阶学术词汇（3000 词 + 1500 精选）",
+    "level": "GRE",
+    "cover": "🔬",
+    "wordCount": 3000
+  },
+  {
+    "id": "nce",
+    "name": "新概念英语",
+    "description": "新概念英语 1-4 册词汇（分册合并去重）",
+    "level": "新概念",
+    "cover": "📕",
+    "wordCount": 3319
+  },
+  {
+    "id": "topwords",
+    "name": "高频基础词",
+    "description": "常用高频核心词（中文释义，日常与考试通用）",
+    "level": "基础",
+    "cover": "🌟",
+    "wordCount": 4000
+  }
+]
